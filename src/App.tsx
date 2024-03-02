@@ -1,4 +1,10 @@
-import {useEffect, useState} from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import Header from './components/Header';
+import Home from './pages/Home';
+import Footer from './components/Footer';
+import Product from './pages/Product';
+import NotFound from './pages/NotFound';
 
 function App() {
   const largeScreen = window.matchMedia('(min-width: 640px)').matches;
@@ -6,24 +12,34 @@ function App() {
 
   useEffect(() => {
     function handleResize() {
-      setIsAppDisabled(window.matchMedia('(min-width: 768px)').matches);
+      setIsAppDisabled(window.matchMedia('(min-width: 640px)').matches);
     }
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  if (isAppDisabled)
+  if (isAppDisabled) {
     return (
-      <div className='h-screen flex items-center justify-center'>
-        <h3 className='na-message text-center'>
+      <main className='h-screen flex items-center justify-center'>
+        <h3 className='na-message text-center font-bold'>
           This website is not available on desktop <br /> Move along mate :)
         </h3>
-      </div>
+      </main>
     );
+  }
+
   return (
-    <div className='p-3'>
-      <h1 className='text-center text-2xl font-bold'>TC Ecommerce</h1>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <main className='mt-20 p-3'>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='product/:id' element={<Product />} />
+          <Route path='*' element={<NotFound />}  />
+        </Routes>
+      </main>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
