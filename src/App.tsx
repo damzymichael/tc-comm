@@ -7,12 +7,12 @@ import Product from './pages/Product';
 import NotFound from './pages/NotFound';
 
 function App() {
-  const largeScreen = window.matchMedia('(min-width: 640px)').matches;
+  const largeScreen = window.matchMedia('(min-width: 768px)').matches;
   const [isAppDisabled, setIsAppDisabled] = useState(largeScreen);
 
   useEffect(() => {
     function handleResize() {
-      setIsAppDisabled(window.matchMedia('(min-width: 640px)').matches);
+      setIsAppDisabled(window.matchMedia('(min-width: 768px)').matches);
     }
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
