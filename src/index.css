@@ -20,3 +20,11 @@ body {
 .na-message {
   font-size: clamp(2.3328rem, 2.0827rem + 1.2504vi, 3.0518rem);
 }
+
+.categories {
+  scroll-snap-type: x mandatory;
+}
+
+.categories > div {
+  scroll-snap-align: left;
+}

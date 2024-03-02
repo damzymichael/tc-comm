@@ -21,8 +21,8 @@ const Home = memo(function () {
       {/* Categories  */}
       <div id='categories' className='mb-6'>
         <h4 className='font-medium mb-3'>Categories</h4>
-        <div className='flex gap-2 overflow-x-scroll'>
-          {Array.from({length: 6}).map((_, i) => (
+        <div className='flex gap-2 overflow-x-scroll categories'>
+          {Array.from({length: 12}).map((_, i) => (
             <div
               key={i}
               className='bg-white p-2 flex items center gap-4 rounded-md'
