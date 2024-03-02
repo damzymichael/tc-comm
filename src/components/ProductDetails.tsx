@@ -19,7 +19,7 @@ interface ProductDetailsProps {
 const ProductDetails = memo(function ({name, price}: ProductDetailsProps) {
   return (
     //Change to figure
-    <div className='w-44 rounded-md p-2 bg-white'>
+    <div className='w-[47%] flex-shrink-0 rounded-md p-2 bg-white'>
       <div className='image h-32 bg-[#faf9f9] rounded-md mb-3 p-1'>
         <div className='w-[12%] aspect-square bg-white rounded ml-auto' />
       </div>

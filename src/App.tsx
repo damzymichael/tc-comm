@@ -31,7 +31,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <main className='mt-20 p-3'>
+      <main className='mt-20 mb-5 p-3'>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='product/:id' element={<Product />} />

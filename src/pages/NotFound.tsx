@@ -4,10 +4,12 @@ import {Link, useNavigate} from 'react-router-dom';
 const NotFound = memo(function () {
   const navigate = useNavigate();
   return (
-    <div>
-      <h2 className='mb-8 font-bold text-3xl'>This page doesn't exist</h2>
+    <div style={{height: 'calc(100vh - 225px)'}}>
+      <h2 className='mb-8 font-semibold text-2xl'>
+        The page you're looking for doesn't exist
+      </h2>
       <div className='flex gap-3'>
-        <Link to='/' className='bg-black p-3 text-white rounded-lg' replace>
+        <Link to='/' className='p-3 rounded-lg border border-black' replace>
           Homepage
         </Link>
         <button

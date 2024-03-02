@@ -37,11 +37,13 @@ const Home = memo(function () {
       {/* Top items  */}
       <section>
         <h4 className='font-medium mb-4'>Top Items</h4>
-        <div className='flex flex-wrap gap-2'>
-          {fakeProducts.map((prod, i) => (
-            <ProductDetails {...prod} key={i} />
-          ))}
-        </div>
+        {Array.from({length: 3}).map((_, i) => (
+          <div className='flex gap-2 overflow-x-scroll mb-4' key={i}>
+            {fakeProducts.map((prod, i) => (
+              <ProductDetails {...prod} key={i} />
+            ))}
+          </div>
+        ))}
       </section>
     </>
   );
