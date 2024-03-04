@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Footer from './components/Footer';
 import Product from './pages/Product';
 import NotFound from './pages/NotFound';
+import ScrollRestoration from './components/ScrollRestoration';
+import Cart from './pages/Cart';
 
 function App() {
   const largeScreen = window.matchMedia('(min-width: 768px)').matches;
@@ -32,10 +34,12 @@ function App() {
     <BrowserRouter>
       <Header />
       <main className='mt-20 mb-5 p-3'>
+        <ScrollRestoration />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='product/:id' element={<Product />} />
-          <Route path='*' element={<NotFound />}  />
+          <Route path='cart' element={<Cart />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </main>
       <Footer />

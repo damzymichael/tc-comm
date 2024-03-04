@@ -1,6 +1,10 @@
 import {memo} from 'react';
+import {useLocation} from 'react-router-dom';
 
 const Footer = memo(function () {
+  const {pathname} = useLocation();
+  if (pathname === '/cart') return null;
+
   return (
     <footer className='bg-black text-white text-center py-3'>
       <p className='mb-4'>

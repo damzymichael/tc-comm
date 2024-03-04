@@ -1,5 +1,6 @@
 import {memo} from 'react';
 import cartIcon from '../assets/cart.svg';
+import {Link, useLocation} from 'react-router-dom';
 
 interface ProductDetailsProps {
   /**
@@ -16,10 +17,15 @@ interface ProductDetailsProps {
   price: number;
 }
 
-const ProductDetails = memo(function ({name, price}: ProductDetailsProps) {
+const ProductDetails = memo(function ({name, price, id}: ProductDetailsProps) {
+  const location = useLocation()
   return (
     //Change to figure
-    <div className='w-[47%] flex-shrink-0 rounded-md p-2 bg-white'>
+    <Link
+      to={'product/' + id}
+      state={{prevPath: location.pathname}}
+      className='w-[47%] flex-shrink-0 rounded-md p-2 bg-white'
+    >
       <div className='image h-32 bg-[#faf9f9] rounded-md mb-3 p-1'>
         <div className='w-[12%] aspect-square bg-white rounded ml-auto' />
       </div>
@@ -35,7 +41,7 @@ const ProductDetails = memo(function ({name, price}: ProductDetailsProps) {
           Buy now
         </button>
       </div>
-    </div>
+    </Link>
   );
 });
 

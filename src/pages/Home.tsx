@@ -1,12 +1,9 @@
 import {memo} from 'react';
+import {fakeProducts} from '../data';
 import ProductDetails from '../components/ProductDetails';
+import Categories from '../components/Categories';
 
 const Home = memo(function () {
-  const fakeProducts = Array.from({length: 6}).map((_, i) => ({
-    name: 'Bad and bougee Hot Jeans',
-    price: 250000,
-    id: i + 1
-  }));
   return (
     <>
       <section className='bg-black text-white rounded-lg p-3 px-5 mb-6'>
@@ -21,17 +18,7 @@ const Home = memo(function () {
       {/* Categories  */}
       <div id='categories' className='mb-6'>
         <h4 className='font-medium mb-3'>Categories</h4>
-        <div className='flex gap-2 overflow-x-scroll categories'>
-          {Array.from({length: 12}).map((_, i) => (
-            <div
-              key={i}
-              className='bg-white p-2 flex items center gap-4 rounded-md'
-            >
-              <div className='w-5 h-5 bg-gray-500' />
-              <p className='font-medium text-black'>Tops</p>
-            </div>
-          ))}
-        </div>
+        <Categories />
       </div>
 
       {/* Top items  */}
