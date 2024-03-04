@@ -23,7 +23,7 @@ const Product = memo(function () {
           NGN {(product?.price / 100).toLocaleString('en-US')}
         </p>
       </div>
-      <div className='bg-[#fafaf9] h-40 mb-3'>
+      <div className='bg-[#fafaf9] h-80 mb-3'>
         <button></button>
         <button></button>
       </div>
@@ -63,7 +63,7 @@ const Product = memo(function () {
         </div>
       </div>
 
-      <div className='sticky bottom-0 flex gap-3 py-3'>
+      <div className='sticky bg-[#f5f5f5] bottom-0 flex gap-3 py-3'>
         <button className='bg-white px-4 rounded-lg'>
           <img src={cartIcon} alt='' />
         </button>
