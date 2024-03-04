@@ -7,6 +7,8 @@ import Product from './pages/Product';
 import NotFound from './pages/NotFound';
 import ScrollRestoration from './components/ScrollRestoration';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import Delivery from './pages/Delivery';
 
 function App() {
   const largeScreen = window.matchMedia('(min-width: 768px)').matches;
@@ -39,6 +41,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='product/:id' element={<Product />} />
           <Route path='cart' element={<Cart />} />
+          <Route path='checkout' element={<Checkout />} />
+          <Route path='delivery' element={<Delivery />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </main>

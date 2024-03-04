@@ -61,34 +61,37 @@ const StockPile = memo(function ({
             'border rounded-lg p-2 flex gap-2 items-start ' +
             (select ? 'border-black' : 'border-[#7e7e7e]')
           }
-          onClick={toggleSelect}
         >
           <div
             className={
               'border rounded w-4 h-4 ' +
               (select ? 'bg-black' : 'border-[#7e7e7e]')
             }
+            onClick={toggleSelect}
           />
-          <div className='image w-1/5 aspect-square bg-[#faf9f9]' />
+          <div className='image w-1/3 aspect-square bg-[#faf9f9]' />
           <div>
             <p className='text-[#666] text-sm font-medium mb-3'>
               Bad and bougee hot jeans
             </p>
             <p className='font-semibold'>NGN 3,500</p>
           </div>
-          <div className='bg-[#fafaf9] p-2 rounded-3xl flex flex-col items-center gap-1 w-max'>
+          <div
+            className='bg-[#fafaf9] p-2 rounded-3xl flex flex-col items-center gap-1 w-max'
+            onClick={e => e.stopPropagation()}
+          >
             <button
               className='bg-white aspect-square p-1 rounded-full'
               onClick={() => number < 30 && setNumber(number + 1)}
             >
-              <img src={add} alt='add icon' />
+              <img src={add} alt='add icon' className='w-4' />
             </button>
-            <span className='font-semibold text-[12px]'>{number}</span>
+            <span className='font-semibold text-sm'>{number}</span>
             <button
               className='bg-white aspect-square p-1 rounded-full'
               onClick={() => number > 0 && setNumber(number - 1)}
             >
-              <img src={subtract} alt='decrease icon' />
+              <img src={subtract} alt='decrease icon' className='w-4' />
             </button>
           </div>
         </div>

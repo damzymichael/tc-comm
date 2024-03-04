@@ -1,5 +1,5 @@
-import {memo, useEffect, useReducer, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {Fragment, memo, useEffect, useReducer, useState} from 'react';
+import {useNavigate, Link} from 'react-router-dom';
 import add from '../assets/add.svg';
 import subtract from '../assets/subtract.svg';
 import StockPile from '../components/Stockpile';
@@ -15,7 +15,7 @@ const Cart = memo(function () {
 
   return (
     <>
-      <header className='-mt-16 relative mb-14'>
+      <header className='-mt-16 relative mb-10'>
         <button
           className='bg-white absolute w-10 z-10 aspect-square flex items-center justify-center rounded-lg'
           onClick={() => navigate(-1)}
@@ -36,7 +36,7 @@ const Cart = memo(function () {
             />
           </svg>
         </button>
-        <h2 className='text-3xl font-semibold text-center translate-y-1'>
+        <h2 className='text-2xl font-semibold text-center translate-y-1'>
           Cart
         </h2>
       </header>
@@ -45,15 +45,17 @@ const Cart = memo(function () {
         {Array.from({length: 5}).map((_, i) => (
           <div className='bg-white p-3 rounded-lg flex gap-2' key={i}>
             {/* image  */}
-            <div className='image w-2/5 aspect-square bg-[#fafaf9] rounded-lg' />
+            <div className='image w-2/5 bg-[#fafaf9] rounded-lg' />
             {/* text details  */}
             <div>
-              <h4 className='text-[#666] mb-1'>Bad and Bougee Hot Jeans</h4>
+              <h4 className='text-[#666] mb-1 text-sm'>
+                Bad and Bougee Hot Jeans
+              </h4>
               <div className='p-1 border border-[#7e7e7e] rounded-lg flex items-center gap-2 w-max mb-1'>
                 <div className='bg-[#14a370] w-3 h-3' />
                 <span className='text-[10px]'>Green</span>
               </div>
-              <p className='font-semibold text-lg'>NGN 3500</p>
+              <p className='font-semibold'>NGN 3500</p>
             </div>
             <div className='bg-[#fafaf9] p-2 rounded-3xl flex flex-col items-center gap-5 w-max'>
               <button
@@ -100,7 +102,7 @@ const Cart = memo(function () {
             <p>Stock pile</p>
             <div
               className={
-                'switch w-20 p-2 rounded-3xl transition-all ease-in duration-200 ' +
+                'switch w-16 p-2 rounded-3xl transition-all ease-in duration-200 ' +
                 (stockPile ? 'bg-black' : 'bg-[#D5E2F8]')
               }
               onClick={toggleStockpile}
@@ -114,30 +116,34 @@ const Cart = memo(function () {
             </div>
           </div>
         </div>
-
-        <button className='bg-black text-white p-4 w-full rounded-lg'>
+        <Link
+          to='/delivery'
+          className='bg-black text-white p-4 block w-full text-center rounded-lg'
+        >
           Proceed
-        </button>
+        </Link>
       </div>
-      {/* Stockpile component  */}
 
-      <div
-        className={
-          'fixed top-0 left-0 h-screen flex items-center justify-center bg-[#000000B2] z-10 transition-[opacity] ease-linear duration-200 ' +
-          (stockPile ? ' opacity-100 w-screen' : 'opacity-0 w-0')
-        }
-        onClick={() => stockPile && toggleStockpile()}
-      />
-      {/* Add max height  */}
-      <div
-        className={
-          'bg-white w-[90%] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 rounded-xl p-3 transition-all ease-linear duration-200 ' +
-          (stockPile ? 'scale-100' : 'scale-0')
-        }
-        onClick={e => e.stopPropagation()}
-      >
-        <StockPile toggleStockPile={toggleStockpile} />
-      </div>
+      {/* Stockpile component  */}
+      <Fragment>
+        <div
+          className={
+            'fixed top-0 left-0 h-screen flex items-center justify-center bg-[#000000B2] z-10 transition-[opacity] ease-linear duration-200 ' +
+            (stockPile ? ' opacity-100 w-screen' : 'opacity-0 w-0')
+          }
+          onClick={() => stockPile && toggleStockpile()}
+        />
+        {/* Add max height  */}
+        <div
+          className={
+            'bg-white w-[90%] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 rounded-xl p-3 transition-all ease-linear duration-200 ' +
+            (stockPile ? 'scale-100' : 'scale-0')
+          }
+          onClick={e => e.stopPropagation()}
+        >
+          <StockPile toggleStockPile={toggleStockpile} />
+        </div>
+      </Fragment>
     </>
   );
 });

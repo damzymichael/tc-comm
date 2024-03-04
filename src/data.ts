@@ -3,3 +3,5 @@ export const fakeProducts = Array.from({length: 6}).map((_, i) => ({
   price: 250000,
   id: i + 1
 }));
+
+export const excludedLinks = ['/cart', '/delivery', '/checkout'];

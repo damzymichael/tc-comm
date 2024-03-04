@@ -1,5 +1,7 @@
 import {memo, useReducer, useEffect} from 'react';
 import {Link, useLocation} from 'react-router-dom';
+import {excludedLinks} from '../data';
+
 import Search from './Search';
 import TC from '../assets/tc.svg';
 import searchIcon from '../assets/search.svg';
@@ -15,10 +17,11 @@ const Header = memo(function () {
     document.body.style.overflow = search || nav ? 'hidden' : 'auto';
   }, [search, nav]);
 
-  if (pathname === '/cart') return null;
+  if (excludedLinks.includes(pathname)) return null;
+
   return (
     <>
-      <header className='fixed top-0 left-0 w-full bg-[#f7f7f7]  pb-0 z-20'>
+      <header className='fixed top-0 left-0 w-full bg-[#f7f7f7] pb-0 z-20'>
         <div className='relative flex justify-between items-center p-3 mb-3'>
           <button onClick={toggleNav}>
             <img src={menu} alt='menu icon' className='w-8' />
@@ -43,8 +46,8 @@ const Header = memo(function () {
       <nav
         className={
           nav
-            ? 'bg-white fixed top-0 z-30 h-screen w-3/5 p-3 pt-7 transition-all ease-in duration-200 left-0'
-            : 'bg-white fixed top-0 z-30 h-screen w-3/5 p-3 pt-7 transition-all ease-in duration-200 -left-full'
+            ? 'bg-white fixed top-0 z-40 h-screen w-3/5 p-3 pt-7 transition-all ease-in duration-200 left-0'
+            : 'bg-white fixed top-0 z-40 h-screen w-3/5 p-3 pt-7 transition-all ease-in duration-200 -left-full'
         }
       >
         <div className='flex justify-between mb-10'>
@@ -73,7 +76,7 @@ const Header = memo(function () {
             )
           )}
         </ul>
-        <div className='mt-[50vh]'>
+        <div className='mt-[35vh]'>
           <h2 className='mb-2'>LIST AN ITEM</h2>
           <div className='flex gap-3'>
             <svg
@@ -105,6 +108,13 @@ const Header = memo(function () {
         <div
           className='w-screen h-screen fixed bg-[#000000B2] z-10'
           onClick={toggleSearch}
+        />
+      )}
+
+      {nav && (
+        <div
+          className='w-screen h-screen fixed bg-[#000000B2] z-30'
+          onClick={toggleNav}
         />
       )}
     </>
