@@ -33,3 +33,11 @@ body {
 .clipped {
   clip-path: polygon(0 0, 83% 0, 32% 100%, 0% 100%);
 }
+
+.navClip {
+  clip-path: circle(4% at 4% 4%);
+}
+
+.navClipOpen {
+  clip-path: circle(140% at 4% 4%);
+}

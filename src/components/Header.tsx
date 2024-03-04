@@ -43,11 +43,12 @@ const Header = memo(function () {
         </div>
         {search && <Search />}
       </header>
+      {/* left-0 */}
+      {/* -left-full  */}
       <nav
         className={
-          nav
-            ? 'bg-white fixed top-0 z-40 h-screen w-3/5 p-3 pt-7 transition-all ease-in duration-200 left-0'
-            : 'bg-white fixed top-0 z-40 h-screen w-3/5 p-3 pt-7 transition-all ease-in duration-200 -left-full'
+          'bg-white fixed top-0 z-40 w-3/5 p-3 pt-7 transition-all ease-in duration-500 ' +
+          (nav ? 'h-screen navClipOpen' : 'h-0 navClip')
         }
       >
         <div className='flex justify-between mb-10'>
@@ -103,14 +104,12 @@ const Header = memo(function () {
           </div>
         </div>
       </nav>
-
       {search && (
         <div
           className='w-screen h-screen fixed bg-[#000000B2] z-10'
           onClick={toggleSearch}
         />
       )}
-
       {nav && (
         <div
           className='w-screen h-screen fixed bg-[#000000B2] z-30'
