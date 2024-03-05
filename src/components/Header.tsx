@@ -1,17 +1,23 @@
 import {memo, useReducer, useEffect} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import {excludedLinks} from '../data';
-
 import Search from './Search';
 import TC from '../assets/tc.svg';
 import searchIcon from '../assets/search.svg';
 import cartIcon from '../assets/cart.svg';
 import menu from '../assets/menu.svg';
 
+const reducerFunction = (state: boolean) => !state;
+
 const Header = memo(function () {
   const {pathname} = useLocation();
-  const [search, toggleSearch] = useReducer(state => !state, false);
-  const [nav, toggleNav] = useReducer(state => !state, false);
+  const [search, toggleSearch] = useReducer(reducerFunction, false);
+  const [nav, toggleNav] = useReducer(reducerFunction, false);
+
+  const resetState = () => {
+    if (nav) toggleNav();
+    if (search) toggleSearch();
+  };
 
   useEffect(() => {
     document.body.style.overflow = search || nav ? 'hidden' : 'auto';
@@ -36,7 +42,7 @@ const Header = memo(function () {
               className='w-6'
               onClick={() => !nav && toggleSearch()}
             />
-            <Link to='/cart'>
+            <Link to='/cart' onClick={resetState}>
               <img src={cartIcon} alt='cart icon' className='w-6' />
             </Link>
           </div>

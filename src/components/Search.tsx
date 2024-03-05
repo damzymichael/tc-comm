@@ -1,4 +1,3 @@
-//Categories component in here
 import {memo, useReducer} from 'react';
 import searchgrey from '../assets/searchgrey.svg';
 import categories from '../assets/categories.svg';
@@ -7,7 +6,7 @@ import Categories from './Categories';
 const Search = memo(function () {
   const [showCategories, toggleCategories] = useReducer(state => !state, false);
   return (
-    <section className='bg-white w-screen py-4 p-3'>
+    <section className='bg-white py-4 p-3 w-screen'>
       <h3 className='text-lg mb-4'>What are you looking for ?</h3>
       <form className='flex gap-3 mb-4'>
         <div className='flex gap-3 p-3 border border-[#D0D5DD] rounded-md flex-grow'>
