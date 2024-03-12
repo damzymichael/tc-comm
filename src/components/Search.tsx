@@ -13,7 +13,7 @@ const Search = memo(function () {
           <img src={searchgrey} alt='search icon' />
           <input
             type='text'
-            className='appearance-none outline-none'
+            className='appearance-none outline-none w-full'
             placeholder='Search here...'
           />
         </div>
