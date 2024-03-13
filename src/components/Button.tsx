@@ -16,9 +16,9 @@ export const Button = memo(function ({
     <button
       className={
         loading
-          ? 'bg-[#7e7e7e] p-1 px-2 rounded-lg flex items-center justify-center ' +
+          ? 'bg-[#7e7e7e] py-2 px-2 rounded-lg flex items-center justify-center ' +
             (full ? 'w-full' : '')
-          : 'bg-black text-white p-1 px-2 rounded-lg flex items-center justify-center ' +
+          : 'bg-black text-white py-2 px-2 rounded-lg flex items-center justify-center ' +
             (full ? 'w-full' : '')
       }
       {...props}

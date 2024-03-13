@@ -1,22 +1,18 @@
+import {useReducer} from 'react';
 import {Button} from '../../components/Button';
 import {ArrowRightIcon, Cube} from '../../components/SVGs';
 import {Link} from 'react-router-dom';
 import bw from '../../assets/bw.png';
-
-type ProductDetail = {
-  name: string;
-  customer: string;
-  purchaseDate: string;
-  quantity: number;
-};
+import {productDetails} from '../../data';
+import RightModal from '../../components/RightModal';
+import OrderDetails from '../../components/OrderDetails';
+import useSmallScreen from '../../hooks/useSmallScreen';
+import {useNavigate} from 'react-router-dom';
 
 function Overview() {
-  const productDetails: ProductDetail[] = new Array(8).fill({
-    name: 'Body con (blue)',
-    customer: 'Deji Omo werey',
-    purchaseDate: '01/02/24',
-    quantity: 40
-  });
+  const [orderDetails, toggleOrderDetails] = useReducer(state => !state, false);
+  const navigate = useNavigate();
+  const smallScreen = useSmallScreen();
   return (
     <>
       <header className='flex items-center justify-between mb-7'>
@@ -101,53 +97,63 @@ function Overview() {
         </div>
       </section>
 
-      <section className='overflow-x-auto'>
+      <section>
         <header className='flex justify-between mb-3'>
           <h3 className='font-semibold text-xl'>Recent Orders</h3>
           <Link to='/admin/orders' className='font-medium text-sm'>
             View all
           </Link>
         </header>
-        <table className='text-sm w-full border-collapse'>
-          <thead className='bg-[#F7F8FA]'>
-            <tr className='border'>
-              {['', 'Product', 'Customer', 'Date', 'Quantity', ''].map(
-                (head, i) => (
-                  <th
-                    key={i}
-                    className={
-                      'text-left p-3 ' +
-                      ((i == 0 || i == 2 || i == 5) && 'hidden sm:table-cell')
-                    }
-                  >
-                    {head}
-                  </th>
-                )
-              )}
-            </tr>
-          </thead>
-          <tbody className='bg-white w-full'>
-            {productDetails.map((product, i) => (
-              <tr key={i} className='border-[0.2px] border-b-[#717171] px-2'>
-                <td className='p-3 hidden sm:table-cell'>
-                  <img src={bw} alt='product image' />
-                </td>
-                {Object.values(product).map((detail, i) => (
-                  <td
-                    className={'p-3 ' + (i == 1 && 'hidden sm:table-cell')}
-                    key={i}
-                  >
-                    {detail}
-                  </td>
-                ))}
-                <td className='cursor-pointer'>
-                  <ArrowRightIcon />
-                </td>
+        <main className='overflow-x-auto'>
+          <table className='text-sm w-full border-collapse min-w-[600px]'>
+            <thead className='bg-[#F7F8FA]'>
+              <tr className='border'>
+                {['', 'Product', 'Customer', 'Date', 'Quantity', ''].map(
+                  (head, i) => (
+                    <th
+                      key={i}
+                      className={
+                        'text-left p-3 ' + (i == 0 && 'hidden sm:table-cell')
+                      }
+                    >
+                      {head}
+                    </th>
+                  )
+                )}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className='bg-white w-full'>
+              {productDetails.map((product, i) => (
+                <tr
+                  key={i}
+                  className='border-[0.2px] border-b-[#717171] px-2'
+                  onClick={() =>
+                    smallScreen
+                      ? navigate('/admin/orders/single-order')
+                      : toggleOrderDetails()
+                  }
+                >
+                  <td className='p-3 hidden sm:table-cell'>
+                    <img src={bw} alt='product image' />
+                  </td>
+                  {Object.values(product).map((detail, i) => (
+                    <td className='p-3' key={i}>
+                      {detail}
+                    </td>
+                  ))}
+                  <td className='cursor-pointer'>
+                    <ArrowRightIcon />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </main>
       </section>
+
+      <RightModal open={orderDetails} toggle={toggleOrderDetails}>
+        <OrderDetails />
+      </RightModal>
     </>
   );
 }

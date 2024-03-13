@@ -11,6 +11,7 @@ import Login from './pages/admin/Login';
 import Overview from './pages/admin/Overview';
 import AdminLayout from './pages/admin/AdminLayout';
 import Orders from './pages/admin/Orders';
+import OrderDetailsPage from './pages/admin/OrderDetailsPage';
 
 function App() {
   return (
@@ -29,7 +30,10 @@ function App() {
         <Route path='admin' element={<AdminLayout />}>
           <Route index element={<Login />} />
           <Route path='overview' element={<Overview />} />
-          <Route path='orders' element={<Orders />} />
+          <Route path='orders'>
+            <Route index element={<Orders />} />
+            <Route path=':id' element={<OrderDetailsPage />} />
+          </Route>
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
