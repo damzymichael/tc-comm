@@ -102,14 +102,14 @@ const Cart = memo(function () {
             <p>Stock pile</p>
             <div
               className={
-                'switch w-16 p-2 rounded-3xl transition-all ease-in duration-200 ' +
+                'switch w-16 p-2 rounded-3xl transition-all ease-in duration-300 ' +
                 (stockPile ? 'bg-black' : 'bg-[#D5E2F8]')
               }
               onClick={toggleStockpile}
             >
               <div
                 className={
-                  'eclipse bg-white w-1/2 aspect-square rounded-full transition-all ease-in duration-200 ' +
+                  'eclipse bg-white w-1/2 aspect-square rounded-full transition-all ease-in duration-300 ' +
                   (stockPile ? 'translate-x-full' : 'translate-x-0')
                 }
               />
@@ -128,7 +128,7 @@ const Cart = memo(function () {
       <Fragment>
         <div
           className={
-            'fixed top-0 left-0 h-screen flex items-center justify-center bg-[#000000B2] z-10 transition-[opacity] ease-linear duration-200 ' +
+            'fixed top-0 left-0 h-screen flex items-center justify-center bg-[#000000B2] z-10 transition-[opacity] ease-linear duration-300 ' +
             (stockPile ? ' opacity-100 w-screen' : 'opacity-0 w-0')
           }
           onClick={() => stockPile && toggleStockpile()}
@@ -136,7 +136,7 @@ const Cart = memo(function () {
         {/* Add max height  */}
         <div
           className={
-            'bg-white w-[90%] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 rounded-xl p-3 transition-all ease-linear duration-200 ' +
+            'bg-white w-[90%] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 rounded-xl p-3 transition-all ease-linear duration-300 ' +
             (stockPile ? 'scale-100' : 'scale-0')
           }
           onClick={e => e.stopPropagation()}

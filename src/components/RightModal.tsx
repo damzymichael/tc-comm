@@ -16,7 +16,7 @@ const RightModal = memo(function ({children, open, toggle}: RightModalProps) {
       {/* Dark Overlay  */}
       <div
         className={
-          'fixed top-0 left-0 hidden sm:block h-screen z-20 bg-[#0000009C] transition-[opacity] ease-in duration-200 ' +
+          'fixed top-0 left-0 hidden sm:block h-screen z-20 bg-[#0000009C] transition-[opacity] ease-in duration-300 ' +
           (open ? 'w-screen opacity-100' : 'w-0 opacity-0')
         }
         onClick={toggle}
@@ -25,7 +25,7 @@ const RightModal = memo(function ({children, open, toggle}: RightModalProps) {
       <section
         ref={ref}
         className={
-          'fixed top-0 w-3/5 h-screen bg-white hidden sm:block max-w-[700px] z-30 pt-7 py-4 overflow-auto transition-all ease-in duration-500 ' +
+          'fixed top-0 w-3/5 h-screen bg-white hidden sm:block max-w-[700px] z-30 pt-7 py-4 overflow-auto transition-all ease-in duration-300 ' +
           (open ? 'right-0' : '-right-full')
         }
       >

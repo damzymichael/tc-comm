@@ -71,7 +71,7 @@ const Layout = memo(function () {
 
       <nav
         className={
-          'bg-white md:hidden fixed top-0 z-40 w-3/5 p-3 pt-7 transition-all ease-in duration-500 ' +
+          'bg-white md:hidden fixed top-0 z-40 w-3/5 p-3 pt-7 transition-all ease-in duration-300 ' +
           (nav ? 'h-screen navClipOpen' : 'h-0 navClip')
         }
       >

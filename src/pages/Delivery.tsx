@@ -85,14 +85,14 @@ const Delivery = memo(function () {
           <div className='flex items-center gap-5'>
             <div
               className={
-                'switch w-16 p-2 rounded-3xl transition-all ease-in duration-200 ' +
+                'switch w-16 p-2 rounded-3xl transition-all ease-in duration-300 ' +
                 (usePrevAddress ? 'bg-black' : 'bg-[#D5E2F8]')
               }
               onClick={togglePrevAddressUse}
             >
               <div
                 className={
-                  'eclipse bg-white w-1/2 aspect-square rounded-full transition-all ease-in duration-200 ' +
+                  'eclipse bg-white w-1/2 aspect-square rounded-full transition-all ease-in duration-300 ' +
                   (usePrevAddress ? 'translate-x-full' : 'translate-x-0')
                 }
               />

@@ -18,7 +18,7 @@ const ImageFileInput = memo(() => {
           <hr />
         </div>
         <label className='bg-black text-white px-3 p-2 rounded-md'>
-          Browse Files{' '}
+          Choose Files{' '}
           <input type='file' multiple className='w-0 h-0 opacity-0' />
         </label>
       </div>
@@ -26,7 +26,7 @@ const ImageFileInput = memo(() => {
         <span className='block w-max aspect-square p-2 bg-[#E7F6EC] rounded-full'>
           <TickIcon />
         </span>
-        <div>
+        <div className='text-sm'>
           <p className='font-semibold'>Name of document</p>
           <span className='font-medium text-[#98A2B3]'>13 MB </span>
         </div>

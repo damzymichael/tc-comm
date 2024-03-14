@@ -66,7 +66,7 @@ const ProductDetailsAdmin = memo(() => {
 
       <div
         className={
-          'bg-[#fafafa] absolute z-10 right-0 w-full sm:p-3 transition-all ease-in duration-500 ' +
+          'bg-[#fafafa] absolute z-10 right-0 w-full sm:p-3 transition-all ease-in duration-300 ' +
           (editProduct
             ? 'top-0 h-auto overflow-auto editOpen'
             : 'top-full h-0 overflow-hidden edit')

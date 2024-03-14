@@ -75,7 +75,7 @@ function AdminLayout() {
         <Fragment>
           <section
             className={
-              'fixed p-3 w-3/5 bg-white top-0 z-30 h-screen transition-all ease-in duration-500 ' +
+              'fixed p-3 w-3/5 bg-white top-0 z-30 h-screen transition-all ease-in duration-300 ' +
               (nav ? 'left-0' : '-left-full')
             }
           >
@@ -83,7 +83,7 @@ function AdminLayout() {
           </section>
           <div
             className={
-              'fixed top-0 left-0 block sm:hidden h-screen z-20 bg-[#0000009C] transition-[opacity] ease-in duration-200 ' +
+              'fixed top-0 left-0 block sm:hidden h-screen z-20 bg-[#0000009C] transition-[opacity] ease-in duration-300 ' +
               (nav ? 'w-screen opacity-100' : 'w-0 opacity-0')
             }
             onClick={toggleNav}
