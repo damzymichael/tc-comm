@@ -1,6 +1,6 @@
 import React, {memo, useEffect, useRef} from 'react';
 
-interface RightModalProps {
+export interface RightModalProps {
   children: React.ReactNode;
   open: boolean;
   toggle: () => void;
@@ -12,7 +12,7 @@ const RightModal = memo(function ({children, open, toggle}: RightModalProps) {
     ref.current?.scrollTo(0, 0);
   }, [open]);
   return (
-    <>
+    <React.Fragment>
       {/* Dark Overlay  */}
       <div
         className={
@@ -31,7 +31,7 @@ const RightModal = memo(function ({children, open, toggle}: RightModalProps) {
       >
         {children}
       </section>
-    </>
+    </React.Fragment>
   );
 });
 

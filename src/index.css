@@ -47,3 +47,10 @@ body {
 .navClipOpen {
   clip-path: circle(140% at 4% 4%);
 }
+
+.edit {
+  clip-path: circle(0% at 100% 100%);
+}
+.editOpen {
+  clip-path: circle(141.4% at 100% 100%);
+}

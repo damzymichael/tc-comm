@@ -1,28 +1,41 @@
-import {memo, useReducer} from 'react';
+import {Fragment, memo, useReducer} from 'react';
 import {Button} from '../../components/Button';
 import searchGrey from '../../assets/searchgrey.svg';
 import {prodDetails} from '../../data';
 import bw from '../../assets/bw.png';
 import {ArrowRightIcon} from '../../components/SVGs';
-import RightModal from '../../components/RightModal';
+import RightModal, {RightModalProps} from '../../components/RightModal';
 import ProductDetailsAdmin from '../../components/ProductDetailsAdmin';
 import useToggleOrNavigate from '../../hooks/useToggleOrNavigate';
+import AddProduct from './AddProduct';
+
+type AddModalProps = Omit<RightModalProps, 'children'>;
+
+export const AddProductModal = ({open, toggle}: AddModalProps) => {
+  return (
+    <RightModal open={open} toggle={toggle}>
+      <AddProduct />
+    </RightModal>
+  );
+};
 
 const Inventory = memo(() => {
   const [productDetails, toggleProductDetails] = useReducer(
     state => !state,
     false
   );
-  const ToggleOrNavigate = useToggleOrNavigate(toggleProductDetails);
+  const toggleOrNavigateDetails = useToggleOrNavigate(toggleProductDetails);
+  const [addProduct, toggleAddProduct] = useReducer(state => !state, false);
+  const toggleOrNavigateNew = useToggleOrNavigate(toggleAddProduct);
   return (
-    <>
+    <Fragment>
       <header className='flex items-center justify-between mb-7'>
         <h3 className='font-semibold text-2xl'>Inventory</h3>
-        <Button>
+        {/* Should be toggle or navigate new  */}
+        <Button onClick={() => toggleOrNavigateNew('/admin/add-product')}>
           <span className='text-sm'>Add product</span>
         </Button>
       </header>
-
       <section>
         <header className='flex flex-col gap-2 items-start lg:flex-row lg:items-center justify-between mb-5'>
           <div className='flex gap-2'>
@@ -75,7 +88,7 @@ const Inventory = memo(() => {
                   key={i}
                   className='border-[0.2px] border-b-[#717171] px-2'
                   // change parameter to real id
-                  onClick={() => ToggleOrNavigate('/admin/inventory/1')}
+                  onClick={() => toggleOrNavigateDetails('/admin/inventory/1')}
                 >
                   <td className='p-3 hidden sm:table-cell'>
                     <img src={bw} alt='product image' />
@@ -105,10 +118,8 @@ const Inventory = memo(() => {
         <ProductDetailsAdmin />
       </RightModal>
 
-      <RightModal open toggle={() => console.log('haha')}>
-       <div></div>
-      </RightModal>
-    </>
+      <AddProductModal open={addProduct} toggle={toggleAddProduct} />
+    </Fragment>
   );
 });
 

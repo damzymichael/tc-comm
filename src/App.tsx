@@ -11,9 +11,12 @@ import Login from './pages/admin/Login';
 import Overview from './pages/admin/Overview';
 import AdminLayout from './pages/admin/AdminLayout';
 import Orders from './pages/admin/Orders';
-import OrderDetailsPage from './pages/admin/OrderDetailsPage';
+import {
+  ProductDetailsPage,
+  OrderDetailsPage,
+  AddNewProductPage
+} from './pages/admin/MobileOnlyPages';
 import Inventory from './pages/admin/Inventory';
-import ProductDetailsPage from './pages/admin/ProductDetailsPage';
 
 function App() {
   return (
@@ -40,6 +43,7 @@ function App() {
             <Route index element={<Inventory />} />
             <Route path=':id' element={<ProductDetailsPage />} />
           </Route>
+          <Route path='add-product' element={<AddNewProductPage />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>

@@ -7,10 +7,14 @@ import {productDetails} from '../../data';
 import RightModal from '../../components/RightModal';
 import OrderDetails from '../../components/OrderDetails';
 import useToggleOrNavigate from '../../hooks/useToggleOrNavigate';
+import {AddProductModal} from './Inventory';
 
 function Overview() {
   const [orderDetails, toggleOrderDetails] = useReducer(state => !state, false);
-  const ToggleOrNavigate = useToggleOrNavigate(toggleOrderDetails);
+  const toggleOrNavigateOrder = useToggleOrNavigate(toggleOrderDetails);
+
+  const [addProduct, toggleAddProduct] = useReducer(state => !state, false);
+  const toggleOrNavigateNew = useToggleOrNavigate(toggleAddProduct);
   return (
     <>
       <header className='flex items-center justify-between mb-7'>
@@ -19,7 +23,7 @@ function Overview() {
           <button className='border border-black px-2 rounded-lg text-sm'>
             Start sales
           </button>
-          <Button>
+          <Button onClick={() => toggleOrNavigateNew('/admin/add-product')}>
             <span className='text-sm'>Add product</span>
           </Button>
         </div>
@@ -125,7 +129,7 @@ function Overview() {
                 <tr
                   key={i}
                   className='border-[0.2px] border-b-[#717171] px-2'
-                  onClick={() => ToggleOrNavigate('/admin/orders/1')}
+                  onClick={() => toggleOrNavigateOrder('/admin/orders/1')}
                 >
                   <td className='p-3 hidden sm:table-cell'>
                     <img src={bw} alt='product image' />
@@ -148,6 +152,8 @@ function Overview() {
       <RightModal open={orderDetails} toggle={toggleOrderDetails}>
         <OrderDetails />
       </RightModal>
+
+      <AddProductModal open={addProduct} toggle={toggleAddProduct} />
     </>
   );
 }

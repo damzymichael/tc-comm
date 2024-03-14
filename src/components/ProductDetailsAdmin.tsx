@@ -1,12 +1,14 @@
 //Product details component for modal on large screens and page on small screens
-import {memo} from 'react';
+import {memo, useReducer} from 'react';
 import bw from '../assets/bw.png';
 import {orderDetails} from '../data';
 import {Button} from './Button';
+import AddProduct from '../pages/admin/AddProduct';
 
 const ProductDetailsAdmin = memo(() => {
+  const [editProduct, toggleEditProduct] = useReducer(state => !state, false);
   return (
-    <>
+    <div className='relative'>
       <h2 className='font-semibold text-2xl px-2 sm:px-7 mb-4'>
         Order Details
       </h2>
@@ -26,7 +28,12 @@ const ProductDetailsAdmin = memo(() => {
           </p>
           <p className='text-xs'>200 pcs</p>
         </div>
-        <button className='w-max md:ml-auto mt-3 sm:nt-0'>Edit Item</button>
+        <button
+          className='w-max md:ml-auto mt-3 sm:nt-0'
+          onClick={toggleEditProduct}
+        >
+          Edit Item
+        </button>
       </div>
       <div className='px-2 sm:px-7'>
         <h2 className='font-semibold text-lg mb-3'>Order History</h2>
@@ -52,9 +59,22 @@ const ProductDetailsAdmin = memo(() => {
             ))}
           </tbody>
         </table>
-        <Button full>Edit Item</Button>
+        <Button full onClick={toggleEditProduct}>
+          Edit Item
+        </Button>
       </div>
-    </>
+
+      <div
+        className={
+          'bg-[#fafafa] absolute z-10 right-0 w-full sm:p-3 transition-all ease-in duration-500 ' +
+          (editProduct
+            ? 'top-0 h-auto overflow-auto editOpen'
+            : 'top-full h-0 overflow-hidden edit')
+        }
+      >
+        <AddProduct toggle={toggleEditProduct} />
+      </div>
+    </div>
   );
 });
 

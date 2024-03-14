@@ -1,4 +1,4 @@
-import {useReducer, memo, useEffect} from 'react';
+import {useReducer, memo, useEffect, Fragment} from 'react';
 import {BrandIcon, HashIcon} from '../../components/SVGs';
 import {Link} from 'react-router-dom';
 import menu from '../../assets/menu.svg';
@@ -18,7 +18,7 @@ interface NavigationProps {
 const Navigation = memo(function ({nav, toggleNav}: NavigationProps) {
   const {pathname} = useLocation();
   return (
-    <>
+    <Fragment>
       <BrandIcon className='mx-auto mb-10 hidden sm:block' />
       <div className='flex mt-3 justify-between sm:hidden'>
         <BrandIcon className='mb-10' />
@@ -45,7 +45,7 @@ const Navigation = memo(function ({nav, toggleNav}: NavigationProps) {
           ))}
         </ul>
       </nav>
-    </>
+    </Fragment>
   );
 });
 
@@ -57,7 +57,7 @@ function AdminLayout() {
     document.body.style.overflowY = nav ? 'hidden' : 'auto';
   }, [nav]);
   return (
-    <>
+    <Fragment>
       <div className='pl-4 pt-4 sm:hidden'>
         <button onClick={toggleNav}>
           <img src={menu} alt='menu icon' className='w-8' />
@@ -72,14 +72,23 @@ function AdminLayout() {
 
       {/* Navigation on mobile  */}
       {pathname !== '/admin' && (
-        <section
-          className={
-            'fixed p-3 w-3/5 bg-white top-0 h-screen transition-all ease-in duration-500 ' +
-            (nav ? 'left-0' : '-left-full')
-          }
-        >
-          <Navigation nav={nav} toggleNav={toggleNav} />
-        </section>
+        <Fragment>
+          <section
+            className={
+              'fixed p-3 w-3/5 bg-white top-0 z-30 h-screen transition-all ease-in duration-500 ' +
+              (nav ? 'left-0' : '-left-full')
+            }
+          >
+            <Navigation nav={nav} toggleNav={toggleNav} />
+          </section>
+          <div
+            className={
+              'fixed top-0 left-0 block sm:hidden h-screen z-20 bg-[#0000009C] transition-[opacity] ease-in duration-200 ' +
+              (nav ? 'w-screen opacity-100' : 'w-0 opacity-0')
+            }
+            onClick={toggleNav}
+          />
+        </Fragment>
       )}
 
       {/* Other pages  */}
@@ -90,7 +99,7 @@ function AdminLayout() {
       >
         <Outlet />
       </main>
-    </>
+    </Fragment>
   );
 }
 
