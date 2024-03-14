@@ -12,6 +12,8 @@ import Overview from './pages/admin/Overview';
 import AdminLayout from './pages/admin/AdminLayout';
 import Orders from './pages/admin/Orders';
 import OrderDetailsPage from './pages/admin/OrderDetailsPage';
+import Inventory from './pages/admin/Inventory';
+import ProductDetailsPage from './pages/admin/ProductDetailsPage';
 
 function App() {
   return (
@@ -33,6 +35,10 @@ function App() {
           <Route path='orders'>
             <Route index element={<Orders />} />
             <Route path=':id' element={<OrderDetailsPage />} />
+          </Route>
+          <Route path='inventory'>
+            <Route index element={<Inventory />} />
+            <Route path=':id' element={<ProductDetailsPage />} />
           </Route>
         </Route>
         <Route path='*' element={<NotFound />} />

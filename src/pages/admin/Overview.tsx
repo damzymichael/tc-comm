@@ -6,13 +6,11 @@ import bw from '../../assets/bw.png';
 import {productDetails} from '../../data';
 import RightModal from '../../components/RightModal';
 import OrderDetails from '../../components/OrderDetails';
-import useSmallScreen from '../../hooks/useSmallScreen';
-import {useNavigate} from 'react-router-dom';
+import useToggleOrNavigate from '../../hooks/useToggleOrNavigate';
 
 function Overview() {
   const [orderDetails, toggleOrderDetails] = useReducer(state => !state, false);
-  const navigate = useNavigate();
-  const smallScreen = useSmallScreen();
+  const ToggleOrNavigate = useToggleOrNavigate(toggleOrderDetails);
   return (
     <>
       <header className='flex items-center justify-between mb-7'>
@@ -127,11 +125,7 @@ function Overview() {
                 <tr
                   key={i}
                   className='border-[0.2px] border-b-[#717171] px-2'
-                  onClick={() =>
-                    smallScreen
-                      ? navigate('/admin/orders/single-order')
-                      : toggleOrderDetails()
-                  }
+                  onClick={() => ToggleOrNavigate('/admin/orders/1')}
                 >
                   <td className='p-3 hidden sm:table-cell'>
                     <img src={bw} alt='product image' />

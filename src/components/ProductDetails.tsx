@@ -3,22 +3,16 @@ import cartIcon from '../assets/cart.svg';
 import {Link, useLocation} from 'react-router-dom';
 
 interface ProductDetailsProps {
-  /**
-   * id of product
-   */
+  /** id of product */
   id: number;
-  /**
-   * name of product
-   */
+  /** name of product*/
   name: string;
-  /**
-   * price of product in kobo
-   */
+  /** price of product in kobo */
   price: number;
 }
 
 const ProductDetails = memo(function ({name, price, id}: ProductDetailsProps) {
-  const location = useLocation()
+  const location = useLocation();
   return (
     //Change to figure
     <Link

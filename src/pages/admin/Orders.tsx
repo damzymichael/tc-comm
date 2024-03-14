@@ -5,6 +5,7 @@ import {ArrowRightIcon} from '../../components/SVGs';
 import bw from '../../assets/bw.png';
 import RightModal from '../../components/RightModal';
 import OrderDetails from '../../components/OrderDetails';
+import useToggleOrNavigate from '../../hooks/useToggleOrNavigate';
 
 //Differences
 //-> border bottom color of button
@@ -14,13 +15,14 @@ import OrderDetails from '../../components/OrderDetails';
 
 const Orders = memo(function () {
   const [orderDetails, toggleOrderDetails] = useReducer(state => !state, false);
+  const ToggleOrNavigate = useToggleOrNavigate(toggleOrderDetails);
   return (
     <>
       <header className='mb-7'>
         <h3 className='font-semibold text-2xl'>Orders</h3>
       </header>
       <section>
-        <header className='flex flex-col gap-2 items-start lg:flex-row lg:items-center justify-between mb-5'>
+        <header className='flex flex-col gap-4 items-start lg:flex-row lg:items-center justify-between mb-5'>
           <div className='flex gap-2'>
             <button className='font-medium text-[#344054] text-xs flex items-center gap-1 p-3 border-b border-b-[#E4E7EC]'>
               <span>All</span>
@@ -35,13 +37,13 @@ const Orders = memo(function () {
               <span className='bg-[#F0F2F5] px-2 rounded-2xl'>0</span>
             </button>
           </div>
-          <form className='w-max'>
+          <form className=''>
             <div className='flex gap-3 items-center rounded-xl p-2 border border-[##D0D5DD]'>
               <img src={searchGrey} alt='search icon' />
               <input
                 type='text'
                 placeholder='Search here...'
-                className='outline-none'
+                className='outline-none w-full p-1'
               />
             </div>
           </form>
@@ -71,7 +73,7 @@ const Orders = memo(function () {
                 <tr
                   key={i}
                   className='border-[0.2px] border-b-[#717171] px-2'
-                  onClick={toggleOrderDetails}
+                  onClick={() => ToggleOrNavigate('/admin/orders/1')}
                 >
                   <td className='p-3 hidden sm:table-cell'>
                     <img src={bw} alt='product image' />

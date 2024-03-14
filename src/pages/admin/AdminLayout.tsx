@@ -8,8 +8,7 @@ import {NavCloseIcon} from '../../components/SVGs';
 const linkInfo: {text: string; link: string}[] = [
   {text: 'Overview', link: '/admin/overview'},
   {text: 'Orders', link: '/admin/orders'},
-  {text: 'Inventory', link: '/admin/inventory'},
-  {text: 'Stockpile', link: '/admin/stockpile'}
+  {text: 'Inventory', link: '/admin/inventory'}
 ];
 
 interface NavigationProps {
