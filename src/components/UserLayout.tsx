@@ -100,13 +100,13 @@ const Layout = memo(function () {
       </nav>
       {search && (
         <div
-          className='w-screen h-screen fixed bg-[#000000B2] z-10'
+          className='w-screen h-screen fixed bg-[#000000B2] z-10 sm:hidden'
           onClick={toggleSearch}
         />
       )}
       {nav && (
         <div
-          className='w-screen h-screen fixed bg-[#000000B2] z-30'
+          className='w-screen h-screen fixed bg-[#000000B2] z-30 sm:hidden'
           onClick={toggleNav}
         />
       )}

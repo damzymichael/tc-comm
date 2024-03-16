@@ -40,7 +40,7 @@ export const ProductDetailsPage = () => {
 
 export const AddNewProductPage = () => {
   return (
-    <MobileOnlyPage navigateTo='/admin/add-product'>
+    <MobileOnlyPage navigateTo='/admin/inventory'>
       <AddProduct />
     </MobileOnlyPage>
   );

@@ -1,5 +1,5 @@
 //Product details component for modal on large screens and page on small screens
-import {memo, useReducer} from 'react';
+import {memo, useEffect, useReducer, useRef} from 'react';
 import bw from '../assets/bw.png';
 import {orderDetails} from '../data';
 import {Button} from './Button';
@@ -7,8 +7,13 @@ import AddProduct from '../pages/admin/AddProduct';
 
 const ProductDetailsAdmin = memo(() => {
   const [editProduct, toggleEditProduct] = useReducer(state => !state, false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const container = containerRef.current as HTMLDivElement;
+    container.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }, [editProduct]);
   return (
-    <div className='relative'>
+    <div className='relative' ref={containerRef}>
       <h2 className='font-semibold text-2xl px-2 sm:px-7 mb-4'>
         Order Details
       </h2>

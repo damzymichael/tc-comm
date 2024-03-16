@@ -26,9 +26,11 @@ interface Props {
 
 const AddProduct = memo(({toggle}: Props) => {
   return (
-    <form className='px-3 sm:px-5 md:px-10'>
+    <form className='px-3 sm:px-5 md:px-10 pb-3'>
       <header className='flex justify-between items-center  mb-4'>
-        <h2 className='font-semibold text-2xl'>{toggle ? 'Edit Product' : 'Add Porduct'}</h2>
+        <h2 className='font-semibold text-2xl'>
+          {toggle ? 'Edit Product' : 'Add Product'}
+        </h2>
         {toggle && (
           <button
             onClick={e => {

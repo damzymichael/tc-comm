@@ -26,3 +26,4 @@ dist-ssr
 # Others
 note.txt
 Breadcrumbs.ts
+schema.prisma

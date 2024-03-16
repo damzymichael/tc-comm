@@ -76,7 +76,7 @@ function Overview() {
         </div>
 
         {/* Stat 3  */}
-        <div className='bg-white w-full sm:w-[30%] p-3 rounded-xl text-white min-w-[200px]'>
+        <div className='bg-white w-full sm:w-[30%] p-3 rounded-xl border border-[#e4e7ec] text-white min-w-[200px]'>
           <header className='flex items-center gap-2 mb-5'>
             <span className='inline-block p-1 rounded-lg border border-[#e4e7ec]'>
               <Cube black />

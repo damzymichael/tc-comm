@@ -6,7 +6,7 @@ import Categories from './Categories';
 const Search = memo(function () {
   const [showCategories, toggleCategories] = useReducer(state => !state, false);
   return (
-    <section className='bg-white py-4 p-3 w-screen'>
+    <section className='bg-white py-4 p-3 w-screen mt-20'>
       <h3 className='text-lg mb-4'>What are you looking for ?</h3>
       <form className='flex gap-3 mb-4'>
         <div className='flex gap-3 p-3 border border-[#D0D5DD] rounded-md flex-grow'>
