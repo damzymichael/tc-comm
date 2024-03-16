@@ -1,4 +1,4 @@
-import {memo} from 'react';
+import {memo, MouseEvent} from 'react';
 import {Spinner} from './SVGs';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -27,3 +27,19 @@ export const Button = memo(function ({
     </button>
   );
 });
+
+export const PreventDefaultButton = ({
+  onClick,
+  children,
+  ...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+  function handleClick(e: MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    onClick && onClick(e);
+  }
+  return (
+    <button onClick={handleClick} {...props}>
+      {children}
+    </button>
+  );
+};

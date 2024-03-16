@@ -68,7 +68,7 @@ const Inventory = memo(() => {
           <table className='text-sm w-full border-collapse min-w-[600px]'>
             <thead className='bg-[#F7F8FA]'>
               <tr className='border'>
-                {['', 'Product', 'Sizes', 'Quantity', 'Colors', ''].map(
+                {['', 'Product', 'Sizes', 'Colors', 'Quantity', ''].map(
                   (head, i) => (
                     <th
                       key={i}

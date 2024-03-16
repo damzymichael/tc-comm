@@ -84,14 +84,14 @@ const StockPile = memo(function ({
               className='bg-white aspect-square p-1 rounded-full'
               onClick={() => number < 30 && setNumber(number + 1)}
             >
-              <img src={add} alt='add icon' className='w-4' />
+              <img src={add} alt='add icon'  />
             </button>
             <span className='font-semibold text-sm'>{number}</span>
             <button
               className='bg-white aspect-square p-1 rounded-full'
               onClick={() => number > 0 && setNumber(number - 1)}
             >
-              <img src={subtract} alt='decrease icon' className='w-4' />
+              <img src={subtract} alt='decrease icon' />
             </button>
           </div>
         </div>

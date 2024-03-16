@@ -1,7 +1,7 @@
-import {memo} from 'react';
+import {FormEvent, memo} from 'react';
 import {NavCloseIcon} from '../../components/SVGs';
 import ImageFileInput from '../../components/ImageFileInput';
-import {Button} from '../../components/Button';
+import {Button, PreventDefaultButton} from '../../components/Button';
 
 const Options = memo(({data}: {data: Array<string>}) => {
   return (
@@ -10,9 +10,9 @@ const Options = memo(({data}: {data: Array<string>}) => {
         <div key={i}>
           <p className='flex gap-2 w-max items-center bg-[#f7f7f7] text-[#0000006B] border border-[#0000006B] rounded-lg p-1 px-2'>
             <span className='text-sm'>{_}</span>
-            <button>
+            <PreventDefaultButton>
               <NavCloseIcon width={13} height={13} />
-            </button>
+            </PreventDefaultButton>
           </p>
         </div>
       ))}
@@ -25,21 +25,19 @@ interface Props {
 }
 
 const AddProduct = memo(({toggle}: Props) => {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
   return (
-    <form className='px-3 sm:px-5 md:px-10 pb-3'>
+    <form className='px-3 sm:px-5 md:px-10 pb-3' onSubmit={handleSubmit}>
       <header className='flex justify-between items-center  mb-4'>
         <h2 className='font-semibold text-2xl'>
           {toggle ? 'Edit Product' : 'Add Product'}
         </h2>
         {toggle && (
-          <button
-            onClick={e => {
-              e.preventDefault();
-              toggle();
-            }}
-          >
+          <PreventDefaultButton onClick={toggle}>
             <NavCloseIcon />
-          </button>
+          </PreventDefaultButton>
         )}
       </header>
       <input
@@ -49,39 +47,50 @@ const AddProduct = memo(({toggle}: Props) => {
       />
 
       <div className='mb-4'>
-        <select
-          className='p-3 block mx-auto outline-none rounded-lg border-[1.5px] border-black placeholder-black mb-2 w-full'
-          id='size'
-        >
-          <option value='' hidden>
-            Sizes
-          </option>
-          <option value='12'>Size 12</option>
-          <option value='13'>Size 13</option>
-          <option value='14'>Size 14</option>
-        </select>
-        <Options data={['Size 12', 'Size 13', 'Size 14']} />
+        <div className='flex gap-2 mb-2'>
+          <input
+            type='text'
+            className='p-2 block mx-auto outline-none rounded-lg border-[1.5px] border-black placeholder-black w-full'
+            placeholder='Size'
+          />
+          <input
+            type='number'
+            className='p-2 block mx-auto outline-none rounded-lg border-[1.5px] border-black placeholder-black w-full'
+            placeholder='Quantity'
+            min={1}
+          />
+          <PreventDefaultButton className='bg-black px-2 p-1 text-white rounded-lg'>
+            Add
+          </PreventDefaultButton>
+        </div>
+        <Options data={['L (14)', 'XL (12)', 'XXL (13)']} />
       </div>
 
       <div className='mb-4'>
-        <select
-          className='p-3 block mx-auto outline-none rounded-lg border-[1.5px] border-black placeholder-black mb-2 w-full'
-          id='size'
-        >
-          <option value='' hidden>
-            Color
-          </option>
-          <option value='red'>Red</option>
-          <option value='green'>Green</option>
-          <option value='blue'>Blue</option>
-        </select>
-        <Options data={['Red', 'Green', 'Blue']} />
+        <div className='flex gap-2 mb-2'>
+          <input
+            type='text'
+            className='p-2 block mx-auto outline-none rounded-lg border-[1.5px] border-black placeholder-black w-full'
+            placeholder='Color'
+          />
+          <input
+            type='number'
+            className='p-2 block mx-auto outline-none rounded-lg border-[1.5px] border-black placeholder-black w-full'
+            placeholder='Quantity'
+            min={1}
+          />
+          <PreventDefaultButton className='bg-black px-2 p-1 text-white rounded-lg'>
+            Add
+          </PreventDefaultButton>
+        </div>
+        <Options data={['Red (11)', 'Green (20)', 'Blue (8)']} />
       </div>
 
       <input
         type='number'
         placeholder='Quantity'
         className='p-3 block mx-auto outline-none rounded-lg border-[1.5px] border-black placeholder-black mb-4 w-full'
+        min={1}
       />
 
       <ImageFileInput />
@@ -92,3 +101,24 @@ const AddProduct = memo(({toggle}: Props) => {
 });
 
 export default AddProduct;
+
+{
+  /* <div
+  className='bg-[#fafaf9] p-2 rounded-3xl flex flex-col items-center gap-1 w-max'
+  onClick={e => e.stopPropagation()}
+>
+  <button
+    className='bg-white aspect-square p-1 rounded-full'
+    onClick={() => number < 30 && setNumber(number + 1)}
+  >
+    <img src={add} alt='add icon' className='w-4' />
+  </button>
+  <span className='font-semibold text-sm'>{number}</span>
+  <button
+    className='bg-white aspect-square p-1 rounded-full'
+    onClick={() => number > 0 && setNumber(number - 1)}
+  >
+    <img src={subtract} alt='decrease icon' className='w-4' />
+  </button>
+</div>; */
+}
