@@ -45,6 +45,12 @@ const Navigation = memo(function ({nav, toggleNav}: NavigationProps) {
           ))}
         </ul>
       </nav>
+      <Link
+        to='/admin'
+        className='p-2 rounded-lg border border-black inline-block mt-7 text-sm'
+      >
+        Logout
+      </Link>
     </Fragment>
   );
 });
@@ -58,11 +64,14 @@ function AdminLayout() {
   }, [nav]);
   return (
     <Fragment>
-      <div className='pl-4 pt-4 sm:hidden'>
-        <button onClick={toggleNav}>
-          <img src={menu} alt='menu icon' className='w-8' />
-        </button>
-      </div>
+      {pathname !== '/admin' && (
+        <div className='pl-4 pt-4 sm:hidden'>
+          <button onClick={toggleNav}>
+            <img src={menu} alt='menu icon' className='w-8' />
+          </button>
+        </div>
+      )}
+
       {/* Navigation on desktop  */}
       {pathname !== '/admin' && (
         <section className='p-3 w-1/5 fixed top-0 hidden sm:block min-w-[180px] max-w-[200px] bg-white h-screen'>
@@ -92,11 +101,7 @@ function AdminLayout() {
       )}
 
       {/* Other pages  */}
-      <main
-        className={
-          (pathname != '/admin' ? 'sm:ml-52' : '') + ' p-3 pt-5 flex-grow'
-        }
-      >
+      <main className={(pathname != '/admin' ? 'sm:ml-52' : '') + ' p-3 pt-5'}>
         <Outlet />
       </main>
     </Fragment>

@@ -87,7 +87,7 @@ const Inventory = memo(() => {
                 <tr
                   key={i}
                   className='border-[0.2px] border-b-[#717171] px-2'
-                  // change parameter to real id
+                  // !change parameter to real id
                   onClick={() => toggleOrNavigateDetails('/admin/inventory/1')}
                 >
                   <td className='p-3 hidden sm:table-cell'>

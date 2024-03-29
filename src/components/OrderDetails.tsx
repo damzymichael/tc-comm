@@ -1,6 +1,6 @@
 import {memo} from 'react';
 import bw from '../assets/bw.png';
-import {Button} from './Button';
+import { Button } from './Button';
 
 const OrderDetails = memo(function () {
   return (

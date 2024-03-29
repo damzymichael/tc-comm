@@ -294,3 +294,39 @@ export const DeleteIconBW = memo((props: DeleteIconBWProps) => {
     </svg>
   );
 });
+
+export const SubtractIcon = (props: SVGProps) => {
+  return (
+    <svg
+      width='10'
+      height='3'
+      viewBox='0 0 10 3'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      {...props}
+    >
+      <path
+        d='M9.83427 0.0908203V2.76644H0.454102V0.0908203H9.83427Z'
+        fill='black'
+      />
+    </svg>
+  );
+};
+
+export const AddIcon = (props: SVGProps) => {
+  return (
+    <svg
+      width='11'
+      height='11'
+      viewBox='0 0 11 11'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      {...props}
+    >
+      <path
+        d='M4.70366 10.0769V0.474609H6.61417V10.0769H4.70366ZM0.861328 6.22745V4.31694H10.4636V6.22745H0.861328Z'
+        fill='black'
+      />
+    </svg>
+  );
+};

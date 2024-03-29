@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
 html {
   @apply font-inter;
 }
@@ -15,17 +23,7 @@ html {
 body {
   margin: 0 auto;
   background-color: #f5f5f5;
-  width: clamp(320px, 100%, 768px);
-}
-
-@media (min-width: 768px) {
-  body {
-    width: clamp(320px, 100%, 1500px);
-  }
-}
-
-.na-message {
-  font-size: clamp(2.3328rem, 2.0827rem + 1.2504vi, 3.0518rem);
+  width: clamp(320px, 100%, 1400px);
 }
 
 .categories {
