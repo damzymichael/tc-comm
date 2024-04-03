@@ -1,7 +1,6 @@
 import {memo, useReducer} from 'react';
-import searchGrey from '../../assets/searchgrey.svg';
 import {productDetails} from '../../data';
-import {ArrowRightIcon} from '../../components/SVGs';
+import {ArrowRightIcon, SearchIcon} from '../../components/SVGs';
 import bw from '../../assets/bw.png';
 import RightModal from '../../components/RightModal';
 import OrderDetails from '../../components/OrderDetails';
@@ -39,7 +38,7 @@ const Orders = memo(function () {
           </div>
           <form className=''>
             <div className='flex gap-3 items-center rounded-xl p-2 border border-[##D0D5DD]'>
-              <img src={searchGrey} alt='search icon' />
+              <SearchIcon fill='#667185' />
               <input
                 type='text'
                 placeholder='Search here...'

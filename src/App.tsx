@@ -8,6 +8,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Delivery from './pages/Delivery';
 import Login from './pages/admin/Login';
+import UserLogin from './pages/Login';
 import Overview from './pages/admin/Overview';
 import AdminLayout from './pages/admin/AdminLayout';
 import Orders from './pages/admin/Orders';
@@ -17,6 +18,7 @@ import {
   AddNewProductPage
 } from './pages/admin/MobileOnlyPages';
 import Inventory from './pages/admin/Inventory';
+import Signup from './pages/Signup';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
       <ScrollRestoration />
       <Routes>
         {/* User's routes  */}
+        <Route path='login' element={<UserLogin />} />
+        <Route path='signup' element={<Signup />} />
         <Route path='/' element={<UserLayout />}>
           <Route index element={<Home />} />
           <Route path='product/:id' element={<Product />} />

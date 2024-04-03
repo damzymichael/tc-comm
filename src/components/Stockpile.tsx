@@ -1,6 +1,5 @@
 import React, {memo, useReducer, useState} from 'react';
-import add from '../assets/add.svg';
-import subtract from '../assets/subtract.svg';
+import {AddIcon, SubtractIcon} from './SVGs';
 
 const StockPile = memo(function ({
   toggleStockPile
@@ -64,34 +63,34 @@ const StockPile = memo(function ({
         >
           <div
             className={
-              'border rounded w-4 h-4 ' +
+              'border rounded w-4 h-4 aspect-square ' +
               (select ? 'bg-black' : 'border-[#7e7e7e]')
             }
             onClick={toggleSelect}
           />
-          <div className='image w-1/3 aspect-square bg-[#faf9f9]' />
+          <div className='image min-w-[80px] w-1/5 aspect-square bg-[#faf9f9]' />
           <div>
-            <p className='text-[#666] text-sm font-medium mb-3'>
+            <p className='text-[#666] text-xs sm:text-sm font-medium mb-3'>
               Bad and bougee hot jeans
             </p>
-            <p className='font-semibold'>NGN 3,500</p>
+            <p className='font-semibold text-sm sm:text-base'>NGN 3,500</p>
           </div>
           <div
-            className='bg-[#fafaf9] p-2 rounded-3xl flex flex-col items-center gap-1 w-max'
+            className='bg-[#fafaf9] p-2 rounded-3xl ml-auto flex flex-col items-center gap-1 w-max'
             onClick={e => e.stopPropagation()}
           >
             <button
               className='bg-white aspect-square p-1 rounded-full'
               onClick={() => number < 30 && setNumber(number + 1)}
             >
-              <img src={add} alt='add icon'  />
+              <AddIcon />
             </button>
             <span className='font-semibold text-sm'>{number}</span>
             <button
               className='bg-white aspect-square p-1 rounded-full'
               onClick={() => number > 0 && setNumber(number - 1)}
             >
-              <img src={subtract} alt='decrease icon' />
+              <SubtractIcon />
             </button>
           </div>
         </div>

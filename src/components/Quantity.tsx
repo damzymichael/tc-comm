@@ -1,6 +1,5 @@
 import {memo} from 'react';
-import add from '../assets/add.svg';
-import subtract from '../assets/subtract.svg';
+import {AddIcon, SubtractIcon} from './SVGs';
 
 interface QuantityProps {
   number: number;
@@ -18,14 +17,14 @@ const Quantity = memo(function ({number, setNumber}: QuantityProps) {
         className='bg-white aspect-square p-3 rounded-full'
         onClick={() => number > 0 && setNumber(number - 1)}
       >
-        <img src={subtract} alt='decrease icon' />
+        <AddIcon />
       </button>
       <span className='font-semibold'>{number}</span>
       <button
         className='bg-white aspect-square p-3 rounded-full'
         onClick={() => number < 30 && setNumber(number + 1)}
       >
-        <img src={add} alt='add icon' />
+        <SubtractIcon />
       </button>
     </div>
   );

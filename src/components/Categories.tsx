@@ -2,13 +2,13 @@ import {memo} from 'react';
 
 const Categories = memo(function () {
   return (
-    <div className='flex gap-2 overflow-x-scroll categories'>
-      {Array.from({length: 12}).map((_, i) => (
+    <div className='flex md:justify-center gap-2 overflow-x-auto categories'>
+      {Array.from({length: 5}).map((_, i) => (
         <div
           key={i}
-          className='bg-white p-2 flex items center gap-4 rounded-md'
+          className='bg-white p-1 px-2 flex items-center gap-1 rounded-md cursor-pointer'
         >
-          <div className='w-5 h-5 bg-gray-500' />
+          <div className='w-2 h-2 bg-gray-500' />
           <p className='font-medium text-black'>Tops</p>
         </div>
       ))}

@@ -1,7 +1,6 @@
 import {useReducer, memo, useEffect, Fragment} from 'react';
-import {BrandIcon, HashIcon} from '../../components/SVGs';
+import {BrandIcon, HashIcon, MenuIcon} from '../../components/SVGs';
 import {Link} from 'react-router-dom';
-import menu from '../../assets/menu.svg';
 import {Outlet, useLocation} from 'react-router-dom';
 import {NavCloseIcon} from '../../components/SVGs';
 
@@ -62,26 +61,21 @@ function AdminLayout() {
   useEffect(() => {
     document.body.style.overflowY = nav ? 'hidden' : 'auto';
   }, [nav]);
+
   return (
     <Fragment>
       {pathname !== '/admin' && (
-        <div className='pl-4 pt-4 sm:hidden'>
-          <button onClick={toggleNav}>
-            <img src={menu} alt='menu icon' className='w-8' />
-          </button>
-        </div>
-      )}
-
-      {/* Navigation on desktop  */}
-      {pathname !== '/admin' && (
-        <section className='p-3 w-1/5 fixed top-0 hidden sm:block min-w-[180px] max-w-[200px] bg-white h-screen'>
-          <Navigation nav={nav} toggleNav={toggleNav} />
-        </section>
-      )}
-
-      {/* Navigation on mobile  */}
-      {pathname !== '/admin' && (
         <Fragment>
+          <div className='pl-4 pt-4 fixed left-0 bg-[#fafafa] z-10 w-full sm:hidden'>
+            <button onClick={toggleNav}>
+              <MenuIcon width={30} height={30} />
+            </button>
+          </div>
+          {/* Navigation on desktop  */}
+          <section className='p-3 w-1/5 fixed top-0 hidden sm:block min-w-[180px] max-w-[200px] bg-white h-screen'>
+            <Navigation nav={nav} toggleNav={toggleNav} />
+          </section>
+          {/* Navigation on mobile  */}
           <section
             className={
               'fixed p-3 w-3/5 bg-white top-0 z-30 h-screen transition-all ease-in duration-300 ' +
@@ -90,18 +84,19 @@ function AdminLayout() {
           >
             <Navigation nav={nav} toggleNav={toggleNav} />
           </section>
+          {/* Dark overlay  */}
           <div
             className={
               'fixed top-0 left-0 block sm:hidden h-screen z-20 bg-[#0000009C] transition-[opacity] ease-in duration-300 ' +
               (nav ? 'w-screen opacity-100' : 'w-0 opacity-0')
             }
             onClick={toggleNav}
-          />
+          />{' '}
         </Fragment>
       )}
 
       {/* Other pages  */}
-      <main className={(pathname != '/admin' ? 'sm:ml-52' : '') + ' p-3 pt-5'}>
+      <main className={(pathname != '/admin' ? 'sm:ml-52' : '') + ' p-3 pt-16'}>
         <Outlet />
       </main>
     </Fragment>

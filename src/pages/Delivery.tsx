@@ -1,5 +1,6 @@
 import {memo, useReducer} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {BackIcon} from '../components/SVGs';
 
 const Delivery = memo(function () {
   const navigate = useNavigate();
@@ -9,32 +10,22 @@ const Delivery = memo(function () {
   );
   return (
     <>
-      <header className='-mt-16 relative mb-6'>
+      <header className='relative mb-14'>
         <button
           className='bg-white absolute w-10 z-10 aspect-square flex items-center justify-center rounded-lg'
           onClick={() => navigate(-1)}
         >
-          <svg
-            width='10'
-            height='16'
-            viewBox='0 0 10 16'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              d='M8.375 1.25L1.625 8L8.375 14.75'
-              stroke='#7E7E7E'
-              strokeWidth='2'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
+          <BackIcon />
         </button>
         <h2 className='text-2xl font-semibold text-center translate-y-1'>
           Delivery Details
         </h2>
       </header>
-      <form autoComplete='off' action='/checkout'>
+      <form
+        autoComplete='off'
+        action='/checkout'
+        className='sm:w-4/5 md:w-3/5 mx-auto'
+      >
         <div className='bg-white p-5 pb-10 rounded-2xl mb-5'>
           <h2 className='font-semibold text-lg mb-3'>Delivery Form</h2>
           <div className='flex flex-col mb-2'>
@@ -85,14 +76,14 @@ const Delivery = memo(function () {
           <div className='flex items-center gap-5'>
             <div
               className={
-                'switch w-16 p-2 rounded-3xl transition-all ease-in duration-300 ' +
+                'switch w-12 p-1 rounded-3xl transition-all ease-in duration-300 ' +
                 (usePrevAddress ? 'bg-black' : 'bg-[#D5E2F8]')
               }
               onClick={togglePrevAddressUse}
             >
               <div
                 className={
-                  'eclipse bg-white w-1/2 aspect-square rounded-full transition-all ease-in duration-300 ' +
+                  'eclipse bg-white w-1/2 aspect-square rounded-full transition-all ease-in duration-200 ' +
                   (usePrevAddress ? 'translate-x-full' : 'translate-x-0')
                 }
               />

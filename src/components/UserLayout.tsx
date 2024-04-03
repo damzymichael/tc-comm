@@ -2,11 +2,14 @@ import {memo, useReducer, useEffect, Fragment, useState} from 'react';
 import {Link, useLocation, Outlet} from 'react-router-dom';
 import {excludedLinks} from '../data';
 import Search from './Search';
-import TC from '../assets/tc.svg';
-import searchIcon from '../assets/search.svg';
-import cartIcon from '../assets/cart.svg';
-import menu from '../assets/menu.svg';
-import {NavCloseIcon, ProfileIcon} from './SVGs';
+import {
+  BrandIcon,
+  CartIcon,
+  MenuIcon,
+  NavCloseIcon,
+  ProfileIcon,
+  SearchIcon
+} from './SVGs';
 import Footer from './Footer';
 
 const reducerFunction = (state: boolean) => !state;
@@ -15,7 +18,7 @@ const Layout = memo(function () {
   const {pathname} = useLocation();
   const [search, toggleSearch] = useReducer(reducerFunction, false);
   const [nav, toggleNav] = useReducer(reducerFunction, false);
-  const [display, setDisplay] = useState(false);
+  const [display, setDisplay] = useState(true);
   const resetState = () => {
     if (nav) toggleNav();
     if (search) toggleSearch();
@@ -23,17 +26,19 @@ const Layout = memo(function () {
 
   useEffect(() => {
     document.body.style.overflow = search || nav ? 'hidden' : 'auto';
-    if (excludedLinks.includes(pathname)) setDisplay(false);
+    setDisplay(excludedLinks.includes(pathname) ? false : true);
+    if (pathname.includes('product'))
+      document.body.style.backgroundColor = 'white';
+    else document.body.style.backgroundColor = '#f5f5f5';
   }, [search, nav, pathname]);
-  
+
   return (
     <>
       {display && (
         <Fragment>
           {/* Desktop Navigation  */}
-          <header className='fixed flex items-center justify-between top-0 left-0 p-3 w-full bg-[#f7f7f7]'>
-            <img src={TC} alt='brand icon' className='w-9' />
-            <form></form>
+          <header className='fixed z-10 flex items-center justify-between top-0 left-0 p-3 w-full bg-[#f7f7f7]'>
+            <BrandIcon />
             <nav className='text-[#606060] text-sm flex items-center gap-4'>
               <ul className='flex gap-3'>
                 {['ORDERS', 'CART', 'FAVORITES', 'STOCKPILE', 'ACCOUNT'].map(
@@ -46,24 +51,26 @@ const Layout = memo(function () {
               </ul>
             </nav>
           </header>
+
           {/* Mobile Navigation  */}
           <header className='fixed md:hidden top-0 left-0 w-full bg-[#f7f7f7] py-2 z-20'>
             <div className='relative flex justify-between items-center p-3 '>
               <button onClick={toggleNav}>
-                <img src={menu} alt='menu icon' className='w-8' />
+                <MenuIcon width={30} height={30} />
               </button>
               <Link to='/' className=' absolute left-1/2 -translate-x-1/2'>
-                <img src={TC} alt='brand icon' className='w-10' />
+                <BrandIcon />
               </Link>
-              <div className='flex gap-5'>
-                <img
-                  src={searchIcon}
-                  alt='search icon'
-                  className='w-6'
+              <div className='flex gap-4'>
+                <SearchIcon
+                  fill='black'
+                  width={27}
+                  height={27}
                   onClick={() => !nav && toggleSearch()}
                 />
+
                 <Link to='/cart' onClick={resetState}>
-                  <img src={cartIcon} alt='cart icon' className='w-6' />
+                  <CartIcon width={27} height={27} />
                 </Link>
               </div>
             </div>
@@ -77,13 +84,13 @@ const Layout = memo(function () {
             }
           >
             <div className='flex justify-between mb-10'>
-              <img src={TC} alt='brand icon' className='w-10' />
+              <BrandIcon />
               <button onClick={toggleNav}>
                 <NavCloseIcon />
               </button>
             </div>
             <ul className='flex flex-col gap-3 text-[#606060]'>
-              {['WOMEN', 'BAGS', 'BRANDS', 'ASSESORIES', 'CATEGORIES'].map(
+              {['ORDERS', 'CART', 'FAVORITES', 'STOCKPILE', 'ACCOUNT'].map(
                 (nav, i) => (
                   <li key={i} className='cursor-pointer'>
                     <a href='#'>{nav}</a>
@@ -113,7 +120,12 @@ const Layout = memo(function () {
           )}
         </Fragment>
       )}
-      <main className='mt-20 mb-5 p-3'>
+      <main
+        className={
+          (!excludedLinks.includes(pathname) && 'mt-20') +
+          ' relative overflow-x-hidden mb-5 p-3'
+        }
+      >
         <Outlet />
       </main>
       <Footer />

@@ -1,7 +1,6 @@
 import {memo, useReducer} from 'react';
-import searchgrey from '../assets/searchgrey.svg';
-import categories from '../assets/categories.svg';
 import Categories from './Categories';
+import {CategoriesIcon, SearchIcon} from './SVGs';
 
 const Search = memo(function () {
   const [showCategories, toggleCategories] = useReducer(state => !state, false);
@@ -10,7 +9,7 @@ const Search = memo(function () {
       <h3 className='text-lg mb-4'>What are you looking for ?</h3>
       <form className='flex gap-3 mb-4'>
         <div className='flex gap-3 p-3 border border-[#D0D5DD] rounded-md flex-grow'>
-          <img src={searchgrey} alt='search icon' />
+          <SearchIcon fill='#667185' />
           <input
             type='text'
             className='appearance-none outline-none w-full'
@@ -24,12 +23,12 @@ const Search = memo(function () {
             toggleCategories();
           }}
         >
-          <img src={categories} alt='icon' className='w-5' />
+          <CategoriesIcon />
         </button>
       </form>
       {showCategories && (
         <div className='flex flex-col gap-3'>
-          {Array.from({length: 2}).map((_, i) => (
+          {Array.from({length: 1}).map((_, i) => (
             <Categories key={i} />
           ))}
         </div>

@@ -1,9 +1,12 @@
 import {Fragment, memo, useEffect, useReducer, useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
-import add from '../assets/add.svg';
-import subtract from '../assets/subtract.svg';
 import StockPile from '../components/Stockpile';
-import {DeleteIconBW} from '../components/SVGs';
+import {
+  AddIcon,
+  BackIcon,
+  DeleteIconBW,
+  SubtractIcon
+} from '../components/SVGs';
 
 const Cart = memo(function () {
   const navigate = useNavigate();
@@ -16,61 +19,50 @@ const Cart = memo(function () {
 
   return (
     <>
-      <header className='-mt-16 relative mb-10'>
+      <header className='relative mb-10'>
         <button
           className='bg-white absolute w-10 z-10 aspect-square flex items-center justify-center rounded-lg'
           onClick={() => navigate(-1)}
         >
-          <svg
-            width='10'
-            height='16'
-            viewBox='0 0 10 16'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              d='M8.375 1.25L1.625 8L8.375 14.75'
-              stroke='#7E7E7E'
-              strokeWidth='2'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
+          <BackIcon />
         </button>
         <h2 className='text-2xl font-semibold text-center translate-y-1'>
           Cart
         </h2>
       </header>
       {/* Cart items  */}
-      <section className='flex flex-col gap-3 mb-20'>
+      <section className='flex flex-wrap gap-3 mb-20'>
         {Array.from({length: 5}).map((_, i) => (
-          <div className='bg-white p-3 rounded-lg flex gap-2' key={i}>
+          <div
+            className='bg-white w-full md:w-[48%] p-3 rounded-lg flex gap-2'
+            key={i}
+          >
             {/* image  */}
             <div className='image w-2/5 bg-[#fafaf9] rounded-lg' />
             {/* text details  */}
             <div>
-              <h4 className='text-[#666] mb-1 text-sm'>
+              <h4 className='text-[#666] mb-1 text-xs sm:text-sm'>
                 Bad and Bougee Hot Jeans
               </h4>
-              <div className='p-1 border border-[#7e7e7e] rounded-lg flex items-center gap-2 w-max mb-1'>
-                <div className='bg-[#14a370] w-3 h-3' />
+              <div className='p-1 border border-[#7e7e7e] rounded-lg flex items-center gap-1 w-max mb-1'>
+                <div className='bg-[#14a370] w-2 h-2' />
                 <span className='text-[10px]'>Green</span>
               </div>
-              <p className='font-semibold'>NGN 3500</p>
+              <p className='font-semibold text-sm sm:taxt-base'>NGN 3500</p>
             </div>
-            <div className='bg-[#fafaf9] p-2 rounded-3xl flex flex-col items-center gap-5 w-max'>
+            <div className='bg-[#fafaf9] p-2 rounded-3xl flex flex-col ml-auto items-center gap-5 w-max'>
               <button
                 className='bg-white aspect-square p-2 rounded-full'
                 onClick={() => number < 30 && setNumber(number + 1)}
               >
-                <img src={add} alt='add icon' />
+                <AddIcon />
               </button>
               <span className='font-semibold text-sm'>{number}</span>
               <button
                 className='bg-white aspect-square p-2 rounded-full'
                 onClick={() => number > 0 && setNumber(number - 1)}
               >
-                <img src={subtract} alt='decrease icon' />
+                <SubtractIcon />
               </button>
             </div>
 
@@ -92,14 +84,14 @@ const Cart = memo(function () {
             <p>Stock pile</p>
             <div
               className={
-                'switch w-16 p-2 rounded-3xl transition-all ease-in duration-300 ' +
+                'switch w-12 p-1 rounded-3xl transition-all ease-in duration-300 ' +
                 (stockPile ? 'bg-black' : 'bg-[#D5E2F8]')
               }
               onClick={toggleStockpile}
             >
               <div
                 className={
-                  'eclipse bg-white w-1/2 aspect-square rounded-full transition-all ease-in duration-300 ' +
+                  'eclipse bg-white w-1/2 aspect-square rounded-full transition-all ease-in duration-200 ' +
                   (stockPile ? 'translate-x-full' : 'translate-x-0')
                 }
               />
@@ -114,25 +106,25 @@ const Cart = memo(function () {
         </Link>
       </div>
 
-      {/* Stockpile component  */}
+      {/* Stockpile modal component and overlay  */}
       <Fragment>
         <div
           className={
-            'fixed top-0 left-0 h-screen flex items-center justify-center bg-[#000000B2] z-10 transition-[opacity] ease-linear duration-300 ' +
+            'fixed top-0 left-0 h-screen bg-[#000000B2] z-10 transition-[opacity] ease-linear duration-300 ' +
             (stockPile ? ' opacity-100 w-screen' : 'opacity-0 w-0')
           }
           onClick={() => stockPile && toggleStockpile()}
         />
-        {/* Add max height  */}
-        <div
+
+        <section
           className={
-            'bg-white w-[90%] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 rounded-xl p-3 transition-all ease-linear duration-300 ' +
+            'bg-white max-h-[85vh] w-[95%] sm:w-4/5 md:w-3/5 overflow-y-auto fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 rounded-xl p-3 transition-all ease-linear duration-300 ' +
             (stockPile ? 'scale-100' : 'scale-0')
           }
           onClick={e => e.stopPropagation()}
         >
           <StockPile toggleStockPile={toggleStockpile} />
-        </div>
+        </section>
       </Fragment>
     </>
   );
