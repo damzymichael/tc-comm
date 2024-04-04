@@ -1,13 +1,17 @@
-import {memo, useEffect, useState} from 'react';
+import {memo, useEffect, useState, useRef} from 'react';
 import {fakeProducts} from '../data';
 import ProductDetails from '../components/ProductDetails';
 import Categories from '../components/Categories';
-import bw from '../assets/bw.png';
+import stubbornTobi from '../assets/IMG_4458.jpg';
 
 const Home = memo(function () {
   const [cartDetails, setCartDetails] = useState(false);
+  const ref = useRef<HTMLElement | null>(null);
   useEffect(() => {
     document.body.style.overflowY = cartDetails ? 'hidden' : 'auto';
+    if (ref.current && cartDetails) {
+      ref.current.scrollIntoView({behavior: 'smooth'});
+    }
   }, [cartDetails]);
   return (
     <>
@@ -22,11 +26,11 @@ const Home = memo(function () {
       </section>
       {/* Full screen image  */}
       <img
-        src={bw}
+        src={stubbornTobi}
         alt='fake Image'
-        className='w-screen h-52 absolute left-0 object-fill'
+        className='w-screen h-[250px] sm:h-[320px] absolute left-0 object-cover'
       />
-      <section className='description sm:mt-72 mt-64 text-center mb-8'>
+      <section className='description sm:mt-[370px] mt-[290px] text-center mb-8'>
         <h3 className='font-semibold text-2xl sm:text-3xl'>
           Explore our products
         </h3>
@@ -82,17 +86,17 @@ const Home = memo(function () {
         <h2 className='font-semibold text-xl mb-4'>Add to cart</h2>
         <div className='flex flex-wrap gap-3'>
           <div className='bg-[#faf9f9] w-full sm:w-[48%] min-h-52 rounded-md' />
-          <section>
-            <div id='select-color' className='mb-6'>
+          <section ref={ref}>
+            <div id='select-color' className='mb-3'>
               <h4 className='font-semibold mb-3'>Select colour</h4>
-              <ul className='text-xs sm:text-sm flex gap-2 overflow-x-auto p-1'>
+              <ul className='text-sm flex gap-2 overflow-x-auto p-1'>
                 {['Green', 'Red', 'Purple', 'Orange', 'Black', 'Brown'].map(
                   item => (
                     <li
                       key={item}
                       className={
                         (item == 'Red' ? 'border-black' : 'border-[##D0D5DD]') +
-                        ' border-[0.5px] p-[1px] px-2 rounded cursor-pointer'
+                        ' border p-[1px] px-2 rounded cursor-pointer'
                       }
                     >
                       {item}
@@ -103,8 +107,8 @@ const Home = memo(function () {
             </div>
 
             <div id='select-size' className='mb-6'>
-              <h4 className='font-semibold mb-3'>Select colour</h4>
-              <ul className='text-xs md:text-sm flex gap-2 overflow-x-auto p-1'>
+              <h4 className='font-semibold mb-3'>Select size</h4>
+              <ul className='text-sm flex gap-2 overflow-x-auto p-1'>
                 {['UK-10', 'UK-11', 'UK-12', 'UK-13', 'UK-14', 'UK-15'].map(
                   item => (
                     <li
@@ -113,7 +117,7 @@ const Home = memo(function () {
                         (item == 'UK-12'
                           ? 'border-black'
                           : 'border-[##D0D5DD]') +
-                        ' border-[0.5px] p-[1px] px-2 rounded cursor-pointer'
+                        ' border p-[1px] px-2 rounded cursor-pointer'
                       }
                     >
                       {item}

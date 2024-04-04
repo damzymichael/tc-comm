@@ -54,7 +54,7 @@ const Layout = memo(function () {
 
           {/* Mobile Navigation  */}
           <header className='fixed md:hidden top-0 left-0 w-full bg-[#f7f7f7] py-2 z-20'>
-            <div className='relative flex justify-between items-center p-3 '>
+            <div className='relative flex justify-between items-center p-2'>
               <button onClick={toggleNav}>
                 <MenuIcon width={30} height={30} />
               </button>
@@ -74,8 +74,8 @@ const Layout = memo(function () {
                 </Link>
               </div>
             </div>
+            {search && <Search />}
           </header>
-          {search && <Search />}
 
           <nav
             className={
