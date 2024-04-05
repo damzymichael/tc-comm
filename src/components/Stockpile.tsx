@@ -1,5 +1,5 @@
 import React, {memo, useReducer, useState} from 'react';
-import {AddIcon, SubtractIcon} from './SVGs';
+import {AddIcon, NavCloseIcon, SubtractIcon} from './SVGs';
 
 const StockPile = memo(function ({
   toggleStockPile
@@ -13,7 +13,8 @@ const StockPile = memo(function ({
       <header className='flex justify-between mb-6'>
         <h1 className='font-semibold text-2xl'>Stock Pile</h1>
         <button onClick={toggleStockPile}>
-          <svg
+          <NavCloseIcon />
+          {/* <svg
             width='18'
             height='18'
             viewBox='0 0 14 14'
@@ -24,13 +25,13 @@ const StockPile = memo(function ({
               d='M7.71094 7L13.1016 12.3984L12.3984 13.1016L7 7.71094L1.60156 13.1016L0.898438 12.3984L6.28906 7L0.898438 1.60156L1.60156 0.898438L7 6.28906L12.3984 0.898438L13.1016 1.60156L7.71094 7Z'
               fill='#AAAAAA'
             />
-          </svg>
+          </svg> */}
         </button>
       </header>
       <p className='text-[#666] text-sm'>
         Stock piling means you can save items for later after payment and have
-        them delivered with othe products when you have the money for delivery.
-        thos is to help users shed the cost of delivery blah blah
+        them delivered with other products when you have the money for delivery.
+        this is to help users shed the cost of delivery
       </p>
 
       <hr className='my-3 bg-[#7e7e7e]' />
@@ -41,10 +42,6 @@ const StockPile = memo(function ({
           <li>
             Stock piling means you can save items for later after payment Stock
             piling means you can save items for later after payment{' '}
-          </li>
-          <li>
-            Stock piling means you can save items for later after payment Stock
-            piling means you can save items for later after payment
           </li>
         </ul>
       </div>

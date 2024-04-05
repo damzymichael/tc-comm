@@ -2,6 +2,7 @@ import {memo, useReducer, useEffect, Fragment, useState} from 'react';
 import {Link, useLocation, Outlet} from 'react-router-dom';
 import {excludedLinks} from '../data';
 import Search from './Search';
+import DarkOverlay from './DarkOverlay';
 import {
   BrandIcon,
   CartIcon,
@@ -53,7 +54,7 @@ const Layout = memo(function () {
           </header>
 
           {/* Mobile Navigation  */}
-          <header className='fixed md:hidden top-0 left-0 w-full bg-[#f7f7f7] py-2 z-20'>
+          <header className='fixed md:hidden top-0 left-0 w-full bg-[#f7f7f7] py-2 px-1 z-20'>
             <div className='relative flex justify-between items-center p-2'>
               <button onClick={toggleNav}>
                 <MenuIcon width={30} height={30} />
@@ -106,18 +107,16 @@ const Layout = memo(function () {
               </div>
             </div>
           </nav>
-          {search && (
-            <div
-              className='w-screen h-screen fixed bg-[#000000B2] z-10 sm:hidden'
-              onClick={toggleSearch}
-            />
-          )}
-          {nav && (
-            <div
-              className='w-screen h-screen fixed bg-[#000000B2] z-30 sm:hidden'
-              onClick={toggleNav}
-            />
-          )}
+
+          {/* Overlay for search component */}
+          <DarkOverlay
+            display={search}
+            toggleDisplay={toggleSearch}
+            zIndex={10}
+          />
+
+          {/* Overlay for navigation  */}
+          <DarkOverlay display={nav} toggleDisplay={toggleNav} />
         </Fragment>
       )}
       <main

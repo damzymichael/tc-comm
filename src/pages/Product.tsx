@@ -41,16 +41,16 @@ const Product = memo(function () {
           </div>
         </header>
 
-        <div id='select-color' className='mb-6'>
+        <div id='select-color' className='mb-4'>
           <h4 className='font-semibold mb-3'>Select colour</h4>
-          <ul className='text-xs sm:text-sm flex gap-2 overflow-x-auto'>
+          <ul className='text-sm flex gap-2 flex-wrap'>
             {['Green', 'Red', 'Purple', 'Orange', 'Black', 'Brown'].map(
               item => (
                 <li
                   key={item}
                   className={
                     (item == 'Red' ? 'border-black' : 'border-[##D0D5DD]') +
-                    ' border-[0.5px] p-1 px-2 rounded cursor-pointer'
+                    ' border p-[1px] px-2 rounded cursor-pointer'
                   }
                 >
                   {item}
@@ -62,14 +62,14 @@ const Product = memo(function () {
 
         <div id='select-size' className='mb-6'>
           <h4 className='font-semibold mb-3'>Select colour</h4>
-          <ul className='text-xs md:text-sm flex gap-2 overflow-x-auto'>
+          <ul className='text-sm flex gap-2 flex-wrap'>
             {['UK-10', 'UK-11', 'UK-12', 'UK-13', 'UK-14', 'UK-15'].map(
               item => (
                 <li
                   key={item}
                   className={
                     (item == 'UK-12' ? 'border-black' : 'border-[##D0D5DD]') +
-                    ' border-[0.5px] p-1 px-2 rounded cursor-pointer'
+                    ' border p-1 px-2 rounded cursor-pointer'
                   }
                 >
                   {item}

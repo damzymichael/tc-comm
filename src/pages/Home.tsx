@@ -3,6 +3,7 @@ import {fakeProducts} from '../data';
 import ProductDetails from '../components/ProductDetails';
 import Categories from '../components/Categories';
 import stubbornTobi from '../assets/IMG_4458.jpg';
+import DarkOverlay from '../components/DarkOverlay';
 
 const Home = memo(function () {
   const [cartDetails, setCartDetails] = useState(false);
@@ -68,13 +69,12 @@ const Home = memo(function () {
           ))}
         </div>
       </section>
+      
       {/* Dark overlay for add to cart modal */}
-      {cartDetails && (
-        <div
-          className='w-screen h-screen fixed top-0 left-0 bg-[#000000B2] z-20'
-          onClick={() => setCartDetails(false)}
-        />
-      )}
+      <DarkOverlay
+        display={cartDetails}
+        toggleDisplay={() => setCartDetails(false)}
+      />
 
       {/* Select parameters for add to cart component  */}
       <section
@@ -86,10 +86,10 @@ const Home = memo(function () {
         <h2 className='font-semibold text-xl mb-4'>Add to cart</h2>
         <div className='flex flex-wrap gap-3'>
           <div className='bg-[#faf9f9] w-full sm:w-[48%] min-h-52 rounded-md' />
-          <section ref={ref}>
+          <section ref={ref} style={{scrollMargin: 20}}>
             <div id='select-color' className='mb-3'>
               <h4 className='font-semibold mb-3'>Select colour</h4>
-              <ul className='text-sm flex gap-2 overflow-x-auto p-1'>
+              <ul className='text-sm flex gap-2 flex-wrap p-1'>
                 {['Green', 'Red', 'Purple', 'Orange', 'Black', 'Brown'].map(
                   item => (
                     <li
@@ -108,7 +108,7 @@ const Home = memo(function () {
 
             <div id='select-size' className='mb-6'>
               <h4 className='font-semibold mb-3'>Select size</h4>
-              <ul className='text-sm flex gap-2 overflow-x-auto p-1'>
+              <ul className='text-sm flex gap-2 flex-wrap p-1'>
                 {['UK-10', 'UK-11', 'UK-12', 'UK-13', 'UK-14', 'UK-15'].map(
                   item => (
                     <li

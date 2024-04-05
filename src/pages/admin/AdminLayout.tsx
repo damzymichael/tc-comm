@@ -3,6 +3,7 @@ import {BrandIcon, HashIcon, MenuIcon} from '../../components/SVGs';
 import {Link} from 'react-router-dom';
 import {Outlet, useLocation} from 'react-router-dom';
 import {NavCloseIcon} from '../../components/SVGs';
+import DarkOverlay from '../../components/DarkOverlay';
 
 const linkInfo: {text: string; link: string}[] = [
   {text: 'Overview', link: '/admin/overview'},
@@ -84,14 +85,8 @@ function AdminLayout() {
           >
             <Navigation nav={nav} toggleNav={toggleNav} />
           </section>
-          {/* Dark overlay  */}
-          <div
-            className={
-              'fixed top-0 left-0 block sm:hidden h-screen z-20 bg-[#0000009C] transition-[opacity] ease-in duration-300 ' +
-              (nav ? 'w-screen opacity-100' : 'w-0 opacity-0')
-            }
-            onClick={toggleNav}
-          />{' '}
+          {/* Dark overlay with opacity transition  */}
+          <DarkOverlay display={nav} toggleDisplay={toggleNav} />
         </Fragment>
       )}
 
