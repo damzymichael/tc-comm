@@ -28,7 +28,7 @@ const Home = memo(function () {
       {/* Full screen image  */}
       <img
         src={stubbornTobi}
-        alt='fake Image'
+        alt='CEO'
         className='w-screen h-[250px] sm:h-[320px] absolute left-0 object-cover'
       />
       <section className='description sm:mt-[370px] mt-[290px] text-center mb-8'>
@@ -69,11 +69,12 @@ const Home = memo(function () {
           ))}
         </div>
       </section>
-      
+
       {/* Dark overlay for add to cart modal */}
       <DarkOverlay
         display={cartDetails}
         toggleDisplay={() => setCartDetails(false)}
+        desktopDisplay
       />
 
       {/* Select parameters for add to cart component  */}

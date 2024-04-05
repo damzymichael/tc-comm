@@ -7,6 +7,7 @@ import {
   DeleteIconBW,
   SubtractIcon
 } from '../components/SVGs';
+import DarkOverlay from '../components/DarkOverlay';
 
 const Cart = memo(function () {
   const navigate = useNavigate();
@@ -108,14 +109,12 @@ const Cart = memo(function () {
 
       {/* Stockpile modal component and overlay  */}
       <Fragment>
-        <div
-          className={
-            'fixed top-0 left-0 h-screen bg-[#000000B2] z-10 transition-[opacity] ease-linear duration-300 ' +
-            (stockPile ? ' opacity-100 w-screen' : 'opacity-0 w-0')
-          }
-          onClick={() => stockPile && toggleStockpile()}
+        <DarkOverlay
+          display={stockPile}
+          toggleDisplay={() => stockPile && toggleStockpile()}
+          zIndex={10}
+          desktopDisplay
         />
-
         <section
           className={
             'bg-white max-h-[85vh] w-[95%] sm:w-4/5 md:w-3/5 overflow-y-auto fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 rounded-xl p-3 transition-all ease-linear duration-300 ' +
