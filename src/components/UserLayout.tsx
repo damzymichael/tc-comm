@@ -38,7 +38,7 @@ const Layout = memo(function () {
       {display && (
         <Fragment>
           {/* Desktop Navigation  */}
-          <header className='fixed z-10 flex items-center justify-between top-0 left-0 p-3 w-full bg-[#f7f7f7]'>
+          <header className='fixed z-10 hidden md:flex items-center justify-between top-0 left-0 p-3 w-full bg-[#f7f7f7]'>
             <BrandIcon />
             <nav className='text-[#606060] text-sm flex items-center gap-4'>
               <ul className='flex gap-3'>

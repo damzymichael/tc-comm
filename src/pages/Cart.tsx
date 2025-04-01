@@ -39,7 +39,7 @@ const Cart = memo(function () {
             key={i}
           >
             {/* image  */}
-            <div className='image w-2/5 bg-[#fafaf9] rounded-lg' />
+            <div className='image w-1/5 self-start aspect-square bg-[#fafaf9] rounded-lg' />
             {/* text details  */}
             <div>
               <h4 className='text-[#666] mb-1 text-xs sm:text-sm'>

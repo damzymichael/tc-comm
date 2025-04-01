@@ -2,7 +2,7 @@ import {memo} from 'react';
 
 const Categories = memo(function () {
   return (
-    <div className='flex md:justify-center gap-2 overflow-x-auto categories'>
+    <div className='flex w-max mx-auto gap-2 overflow-x-auto categories'>
       {Array.from({length: 5}).map((_, i) => (
         <div
           key={i}

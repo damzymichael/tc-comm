@@ -14,18 +14,6 @@ const StockPile = memo(function ({
         <h1 className='font-semibold text-2xl'>Stock Pile</h1>
         <button onClick={toggleStockPile}>
           <NavCloseIcon />
-          {/* <svg
-            width='18'
-            height='18'
-            viewBox='0 0 14 14'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              d='M7.71094 7L13.1016 12.3984L12.3984 13.1016L7 7.71094L1.60156 13.1016L0.898438 12.3984L6.28906 7L0.898438 1.60156L1.60156 0.898438L7 6.28906L12.3984 0.898438L13.1016 1.60156L7.71094 7Z'
-              fill='#AAAAAA'
-            />
-          </svg> */}
         </button>
       </header>
       <p className='text-[#666] text-sm'>
@@ -39,10 +27,7 @@ const StockPile = memo(function ({
       <div>
         <h3 className='font-semibold mb-2'>Rules</h3>
         <ul className='text-[#666] text-sm list-disc px-4'>
-          <li>
-            Stock piling means you can save items for later after payment Stock
-            piling means you can save items for later after payment{' '}
-          </li>
+          <li>Stock piling means you can save items for later after payment</li>
         </ul>
       </div>
 

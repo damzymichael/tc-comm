@@ -52,6 +52,7 @@ const Home = memo(function () {
         <h4 className='font-medium mb-3 text-2xl'>Categories</h4>
         <Categories />
       </section>
+      
       {/* Top items  */}
       <section>
         <h4 className='font-medium mb-4 text-2xl text-center'>Top Items</h4>
